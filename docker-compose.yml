@@ -1,0 +1,9 @@
+services:
+  niveshya:
+    image: zahrbrixta/niveshya:latest
+    container_name: niveshya
+    restart: unless-stopped
+    ports:
+      - "5556:3000"
+    environment:
+      NODE_ENV: production
