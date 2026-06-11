@@ -15,10 +15,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Niveshya",
-    template: "%s | Niveshya",
+    default: "Niveshya Advisory",
+    template: "%s | Niveshya Advisory",
   },
-  description: "Investment intelligence for the modern investor.",
+
+  description:
+    "Professional Accounting, Taxation, GST Compliance, Payroll and Bookkeeping Services in Guwahati, Assam.",
+
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
