@@ -1,36 +1,330 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Niveshya Advisory Website
 
-## Getting Started
+Professional Accounting, Taxation & Compliance Services Website built using Next.js, Tailwind CSS and shadcn/ui.
 
-First, run the development server:
+---
+
+## About Niveshya Advisory
+
+Niveshya Advisory provides accounting, taxation, GST compliance, bookkeeping, payroll support and financial reporting services for businesses across India.
+
+### Core Services
+
+* Accounting & Bookkeeping
+* GST Compliance & Return Filing
+* TDS & Professional Tax Compliance
+* Payroll Support & Salary Processing
+* MIS & Financial Reporting
+* Inventory & Stock Accounting
+* Account Finalization Support
+* Financial Documentation & Compliance
+
+### Industries Served
+
+* Trading & Distribution
+* Travel & Hospitality
+* Service Sector
+* Small & Medium Enterprises (SMEs)
+* Proprietorship Firms
+* Partnership Firms
+
+### Value Proposition
+
+* Accurate Bookkeeping & Accounting
+* Timely GST & Tax Compliance
+* Strong Reconciliation & Financial Controls
+* Reliable MIS Reporting
+* Cost-Effective Outsourced Accounting Support
+* Professional & Confidential Financial Handling
+
+---
+
+# Technology Stack
+
+| Technology      | Purpose            |
+| --------------- | ------------------ |
+| Next.js 16      | Frontend Framework |
+| React 19        | UI Rendering       |
+| TypeScript      | Type Safety        |
+| Tailwind CSS v4 | Styling            |
+| shadcn/ui       | Component Library  |
+| Lucide React    | Icons              |
+| Docker          | Containerization   |
+| GitHub Actions  | CI/CD              |
+| Docker Hub      | Image Registry     |
+
+---
+
+# Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Application will run on:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```txt
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# Production Build
 
-To learn more about Next.js, take a look at the following resources:
+Build:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Run:
 
-## Deploy on Vercel
+```bash
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Docker
+
+Build image:
+
+```bash
+docker build -t niveshya .
+```
+
+Run container:
+
+```bash
+docker run -p 3000:3000 niveshya
+```
+
+---
+
+# Project Structure
+
+```txt
+app/
+│
+├── layout.tsx
+├── page.tsx
+├── globals.css
+├── favicon.ico
+│
+components/
+│
+├── about/
+│   └── About.tsx
+│
+├── contact/
+│   └── Contact.tsx
+│
+├── cta/
+│   └── Cta.tsx
+│
+├── features/
+│   └── features.tsx
+│
+├── footer/
+│   └── Footer.tsx
+│
+├── industries/
+│   └── Industries.tsx
+│
+├── stats/
+│   └── Stats.tsx
+│
+├── trust/
+│   └── trust.tsx
+│
+└── ui/
+    ├── hero.tsx
+    ├── navbar.tsx
+    ├── button.tsx
+    ├── card.tsx
+    ├── input.tsx
+    ├── textarea.tsx
+    └── other shadcn components
+
+public/
+│
+├── logo.png
+├── images/
+└── static assets
+
+.github/
+└── workflows/
+    └── docker-image.yml
+
+Dockerfile
+docker-compose.yml
+README.md
+```
+
+---
+
+# Website Sections
+
+Current homepage layout:
+
+```txt
+Navbar
+Hero
+Stats
+Services
+Industries Served
+About
+Trust
+Contact
+Call To Action
+Footer
+```
+
+Configured in:
+
+```txt
+app/page.tsx
+```
+
+---
+
+# Adding New Sections
+
+Create a component:
+
+```txt
+components/testimonials/Testimonials.tsx
+```
+
+Import into:
+
+```txt
+app/page.tsx
+```
+
+Example:
+
+```tsx
+import Testimonials from "@/components/testimonials/Testimonials";
+```
+
+Render:
+
+```tsx
+<Testimonials />
+```
+
+---
+
+# Creating New Pages
+
+Example:
+
+```txt
+app/gst-filing/page.tsx
+```
+
+URL becomes:
+
+```txt
+https://niveshya.co.in/gst-filing
+```
+
+Example pages planned:
+
+```txt
+/about
+/contact
+/bookkeeping
+/gst-filing
+/payroll
+/taxation
+```
+
+---
+
+# Deployment
+
+Source Code:
+
+GitHub Repository
+
+Container Registry:
+
+Docker Hub
+
+Deployment Method:
+
+```txt
+GitHub Push
+↓
+GitHub Actions
+↓
+Docker Build
+↓
+Docker Hub Push
+↓
+Server Pull
+↓
+Docker Compose Restart
+```
+
+---
+
+# Future Roadmap
+
+## Phase 1
+
+* Landing Page
+* Contact Form
+* Responsive Design
+* Basic SEO
+
+## Phase 2
+
+* Lead Storage Database
+* Server Actions
+* Email Notifications
+* Admin Dashboard
+
+## Phase 3
+
+* Blog
+* GST Resources
+* AI SEO Pages
+* Lead Analytics
+
+## Phase 4
+
+* Client Portal
+* Document Upload
+* Accounting Workflow Tracking
+
+---
+
+# Maintainers
+
+Niveshya Advisory
+
+Guwahati, Assam, India
+
+Phone:
++91 8638834593
++91 9022391182
+
+Email:
+[rashmitasaha2013@gmail.com](mailto:rashmitasaha2013@gmail.com)
+
+Website:
+https://niveshya.co.in
+
+```
+```
