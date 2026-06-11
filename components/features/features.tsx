@@ -1,75 +1,101 @@
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  TrendingUp,
+  BookOpen,
+  FileCheck,
+  Landmark,
+  Users,
   BarChart3,
-  Shield,
+  Package,
 } from "lucide-react";
 
-const features = [
+const services = [
   {
-    icon: TrendingUp,
-    title: "Market Intelligence",
+    icon: BookOpen,
+    title: "Accounting & Bookkeeping",
     description:
-      "Transform market data into actionable investment insights.",
+      "Complete bookkeeping, ledger management, journal entries, reconciliations and maintenance of accurate financial records.",
+  },
+  {
+    icon: FileCheck,
+    title: "GST Compliance & Filing",
+    description:
+      "GSTR-1, GSTR-3B, GSTR-2B reconciliations, e-invoicing, e-way bills and statutory GST compliance support.",
+  },
+  {
+    icon: Landmark,
+    title: "Tax & Statutory Compliance",
+    description:
+      "TDS, Professional Tax, compliance documentation and support for statutory filing requirements.",
+  },
+  {
+    icon: Users,
+    title: "Payroll Support",
+    description:
+      "Salary processing, payroll records, employee-related accounting and monthly payroll support services.",
   },
   {
     icon: BarChart3,
-    title: "Portfolio Analytics",
+    title: "MIS & Financial Reporting",
     description:
-      "Monitor performance, allocation, and risk in real time.",
+      "Management reports, financial summaries and business insights to support informed decision-making.",
   },
   {
-    icon: Shield,
-    title: "Risk Assessment",
+    icon: Package,
+    title: "Inventory & Stock Accounting",
     description:
-      "Evaluate opportunities with a structured risk framework.",
+      "Inventory tracking, stock accounting, reconciliation and preparation of stock statements.",
   },
 ];
 
 export default function Features() {
   return (
-    <section className="py-24">
+    <section
+      id="services"
+      className="py-24"
+    >
       <div className="mx-auto max-w-7xl px-6">
 
         <div className="mx-auto max-w-3xl text-center">
 
-          <p className="text-sm font-semibold tracking-widest text-emerald-500">
-            CAPABILITIES
+          <p className="text-sm font-semibold tracking-widest text-emerald-600">
+            OUR SERVICES
           </p>
 
           <h2 className="mt-4 text-4xl font-bold tracking-tight">
-            Built For Serious Investors
+            Comprehensive Accounting &
+            Compliance Solutions
           </h2>
 
-          <p className="mt-4 text-muted-foreground">
-            Powerful tools designed to help investors make
-            informed and confident decisions.
+          <p className="mt-4 text-lg text-muted-foreground">
+            Professional accounting, taxation and compliance
+            services designed to help businesses maintain
+            financial accuracy and meet regulatory requirements.
           </p>
 
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-          {features.map((feature) => {
-            const Icon = feature.icon;
+          {services.map((service) => {
+            const Icon = service.icon;
 
             return (
               <Card
-                key={feature.title}
-                className="transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30"
+                key={service.title}
+                className="group transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-lg"
               >
                 <CardContent className="p-8">
 
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10">
-                    <Icon className="h-6 w-6 text-emerald-500" />
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/10 transition-colors group-hover:bg-emerald-500/15">
+                    <Icon className="h-7 w-7 text-emerald-600" />
                   </div>
 
-                  <h3 className="mb-3 text-xl font-semibold">
-                    {feature.title}
+                  <h3 className="mb-4 text-xl font-semibold">
+                    {service.title}
                   </h3>
 
                   <p className="leading-relaxed text-muted-foreground">
-                    {feature.description}
+                    {service.description}
                   </p>
 
                 </CardContent>

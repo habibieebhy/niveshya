@@ -1,81 +1,139 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  ArrowRight,
+  CircleCheck,
+} from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-32 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
+    <section
+      id="home"
+      className="relative overflow-hidden bg-background"
+    >
+      {/* Subtle Background Glow */}
+
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute left-1/2 top-20 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-emerald-500/5 blur-3xl" />
       </div>
 
-      <div className="mx-auto flex min-h-[90vh] max-w-7xl items-center px-6">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
 
-        <div className="max-w-3xl">
+        <div className="grid items-center gap-20 lg:grid-cols-2">
 
-          <div className="inline-flex items-center rounded-full border px-4 py-2 text-sm text-muted-foreground">
-            Trusted Investment Intelligence Platform
+          {/* LEFT */}
+
+          <div>
+
+            <div className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-600 dark:text-emerald-400">
+              8+ Years of Accounting & Compliance Experience
+            </div>
+
+            <h1 className="mt-8 text-5xl font-bold tracking-tight md:text-7xl text-foreground">
+
+              Accounting,
+
+              <span className="block text-emerald-500">
+                Taxation &
+              </span>
+
+              Compliance Services
+
+            </h1>
+
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Professional bookkeeping, GST compliance,
+              payroll support, taxation and outsourced
+              accounting services for SMEs, traders,
+              partnerships and growing businesses.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+
+              <Button
+                size="lg"
+                className="gap-2 bg-emerald-600 text-white hover:bg-emerald-700"
+              >
+                Schedule Consultation
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+              >
+                <a href="tel:+918638834593">
+                  Call Now
+                </a>
+              </Button>
+
+            </div>
+
           </div>
 
-          <h1 className="mt-8 text-6xl font-bold tracking-tight md:text-7xl lg:text-8xl">
-            Make Better
-            <span className="block text-emerald-500">
-              Investment Decisions
-            </span>
-          </h1>
+          {/* RIGHT */}
 
-          <p className="mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground">
-            Evaluate opportunities, understand risk,
-            and allocate capital with confidence using
-            data-driven investment intelligence.
-          </p>
+          <div className="hidden lg:flex items-center justify-center">
 
-          <div className="mt-10 flex flex-wrap gap-4">
+            <Card className="w-[460px] border-border/50 bg-card/40 shadow-none backdrop-blur-xl">
 
-            <Button size="lg" className="gap-2">
-              Get Started
-              <ArrowRight className="h-4 w-4" />
-            </Button>
+              <CardContent className="p-12">
 
-            <Button
-              variant="outline"
-              size="lg"
-            >
-              Learn More
-            </Button>
+                <div className="flex flex-col items-center text-center">
 
-          </div>
+                  <Image
+                    src="/logo.png"
+                    alt="Niveshya Advisory"
+                    width={140}
+                    height={140}
+                    priority
+                    className="h-36 w-36 object-contain"
+                  />
 
-          <div className="mt-16 flex flex-wrap gap-10 text-sm text-muted-foreground">
+                  <div className="mt-8">
 
-            <div>
-              <div className="text-2xl font-bold text-foreground">
-                ₹250M+
-              </div>
+                    <h3 className="text-4xl font-semibold tracking-tight text-foreground">
+                      Niveshya Advisory
+                    </h3>
 
-              <div>
-                Capital Analysed
-              </div>
-            </div>
+                    <p className="mt-3 text-muted-foreground">
+                      Accounting • Taxation • Compliance
+                    </p>
 
-            <div>
-              <div className="text-2xl font-bold text-foreground">
-                500+
-              </div>
+                  </div>
 
-              <div>
-                Opportunities Tracked
-              </div>
-            </div>
+                </div>
 
-            <div>
-              <div className="text-2xl font-bold text-foreground">
-                98%
-              </div>
+                <div className="my-10 h-px bg-border" />
 
-              <div>
-                Data Accuracy
-              </div>
-            </div>
+                <div className="space-y-5">
+
+                  {[
+                    "GST Compliance & Return Filing",
+                    "Accounting & Bookkeeping",
+                    "Payroll Support Services",
+                    "Taxation & Statutory Compliance",
+                    "MIS & Financial Reporting",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-3"
+                    >
+                      <CircleCheck className="h-5 w-5 text-emerald-500" />
+
+                      <span className="text-sm text-muted-foreground">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+
+                </div>
+
+              </CardContent>
+
+            </Card>
 
           </div>
 

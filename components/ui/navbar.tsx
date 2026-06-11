@@ -1,20 +1,38 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Phone, Mail } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/90 backdrop-blur-xl">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+
+        {/* Logo */}
 
         <a
           href="#home"
           className="flex items-center gap-3"
         >
-          <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+          <Image
+            src="/logo.png"
+            alt="Niveshya Advisory"
+            width={48}
+            height={48}
+            className="h-12 w-12 object-contain"
+          />
 
-          <span className="text-lg font-semibold tracking-tight">
-            Niveshya
-          </span>
+          <div>
+            <div className="font-semibold tracking-tight">
+              Niveshya Advisory
+            </div>
+
+            <div className="text-xs text-muted-foreground">
+              Accounting • Taxation • Compliance
+            </div>
+          </div>
         </a>
+
+        {/* Navigation */}
 
         <nav className="hidden items-center gap-8 md:flex">
 
@@ -26,17 +44,17 @@ export default function Navbar() {
           </a>
 
           <a
+            href="#services"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Services
+          </a>
+
+          <a
             href="#about"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             About
-          </a>
-
-          <a
-            href="#features"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Capabilities
           </a>
 
           <a
@@ -48,20 +66,30 @@ export default function Navbar() {
 
         </nav>
 
+        {/* Actions */}
+
         <div className="flex items-center gap-3">
 
           <Button
             variant="ghost"
             size="sm"
+            asChild
           >
-            Sign In
+            <a href="mailto:rashmitasaha2013@gmail.com">
+              <Mail className="mr-2 h-4 w-4" />
+              Email
+            </a>
           </Button>
 
           <Button
             size="sm"
             className="bg-emerald-600 hover:bg-emerald-700"
+            asChild
           >
-            Get Started
+            <a href="tel:+918638834593">
+              <Phone className="mr-2 h-4 w-4" />
+              Call Now
+            </a>
           </Button>
 
         </div>
