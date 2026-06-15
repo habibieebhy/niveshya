@@ -1,330 +1,513 @@
-# Niveshya Advisory Website
+# Niveshya Advisory Platform
 
-Professional Accounting, Taxation & Compliance Services Website built using Next.js, Tailwind CSS and shadcn/ui.
+Professional Accounting, Taxation, Compliance & Wealth Advisory Platform built using Next.js 16, React 19, Tailwind CSS v4, shadcn/ui and Neon PostgreSQL.
 
 ---
 
-## About Niveshya Advisory
+# Project Overview
 
-Niveshya Advisory provides accounting, taxation, GST compliance, bookkeeping, payroll support and financial reporting services for businesses across India.
+Niveshya Advisory operates as a dual-service platform:
 
-### Core Services
+## Business Services
 
-* Accounting & Bookkeeping
-* GST Compliance & Return Filing
-* TDS & Professional Tax Compliance
-* Payroll Support & Salary Processing
-* MIS & Financial Reporting
-* Inventory & Stock Accounting
-* Account Finalization Support
-* Financial Documentation & Compliance
+Target Audience:
 
-### Industries Served
-
-* Trading & Distribution
-* Travel & Hospitality
-* Service Sector
-* Small & Medium Enterprises (SMEs)
+* SMEs
 * Proprietorship Firms
 * Partnership Firms
+* Trading & Distribution Businesses
+* Service-Based Companies
 
-### Value Proposition
+Services:
 
-* Accurate Bookkeeping & Accounting
-* Timely GST & Tax Compliance
-* Strong Reconciliation & Financial Controls
-* Reliable MIS Reporting
-* Cost-Effective Outsourced Accounting Support
-* Professional & Confidential Financial Handling
+* Accounting & Bookkeeping
+* GST Compliance
+* Payroll Processing
+* TDS Compliance
+* Financial Reporting
+* MIS Reporting
+* Inventory Accounting
 
----
-
-# Technology Stack
-
-| Technology      | Purpose            |
-| --------------- | ------------------ |
-| Next.js 16      | Frontend Framework |
-| React 19        | UI Rendering       |
-| TypeScript      | Type Safety        |
-| Tailwind CSS v4 | Styling            |
-| shadcn/ui       | Component Library  |
-| Lucide React    | Icons              |
-| Docker          | Containerization   |
-| GitHub Actions  | CI/CD              |
-| Docker Hub      | Image Registry     |
-
----
-
-# Local Development
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start development server:
-
-```bash
-npm run dev
-```
-
-Application will run on:
+Route:
 
 ```txt
-http://localhost:3000
+/business
 ```
 
 ---
 
-# Production Build
+## Wealth Advisory
 
-Build:
+Target Audience:
 
-```bash
-npm run build
-```
+* Salaried Professionals
+* Business Owners
+* Families
+* NRIs
 
-Run:
+Services:
 
-```bash
-npm start
-```
+* Mutual Funds
+* SIP Planning
+* Insurance Advisory
+* Retirement Planning
+* Goal-Based Financial Planning
 
----
+Route:
 
-# Docker
-
-Build image:
-
-```bash
-docker build -t niveshya .
-```
-
-Run container:
-
-```bash
-docker run -p 3000:3000 niveshya
+```txt
+/wealth
 ```
 
 ---
 
-# Project Structure
+# Application Architecture
+
+```txt
+Visitor
+   │
+   ▼
+Gateway Page (/)
+   │
+   ├── /business
+   │
+   └── /wealth
+
+Business / Wealth Pages
+   │
+   ▼
+Contact Forms
+   │
+   ▼
+Next.js Server Actions
+   │
+   ▼
+Neon PostgreSQL
+   │
+   ▼
+Admin CRM Dashboard
+```
+
+---
+
+# Current Features
+
+## Public Website
+
+### Gateway Page
+
+Route:
+
+```txt
+/
+```
+
+Purpose:
+
+Allows visitors to choose between:
+
+* Business Services
+* Wealth Advisory
+
+Component:
+
+```txt
+components/shared/GatewayHero.tsx
+```
+
+---
+
+### Business Website
+
+Route:
+
+```txt
+/business
+```
+
+Contains:
+
+* Hero
+* Statistics
+* Services
+* Industries
+* About
+* Trust
+* Contact Form
+* CTA
+* Footer
+
+---
+
+### Wealth Website
+
+Route:
+
+```txt
+/wealth
+```
+
+Contains:
+
+* Wealth Hero
+* Investment Planning
+* Insurance Services
+* Goal Planning
+* Advisory Trust
+* Wealth CTA
+
+---
+
+# CRM System
+
+## Lead Capture
+
+When a visitor submits a contact form:
+
+```txt
+Form
+  ↓
+Server Action
+  ↓
+Neon Database
+  ↓
+Lead Created
+```
+
+Action:
+
+```txt
+actions/create-lead.ts
+```
+
+Database Table:
+
+```txt
+niveshya.leads
+```
+
+---
+
+## Admin Dashboard
+
+Route:
+
+```txt
+/admin
+```
+
+Purpose:
+
+View all leads.
+
+Features:
+
+* Total Leads
+* New Leads
+* Contacted Leads
+* Converted Leads
+* Recent Lead List
+
+File:
+
+```txt
+app/admin/page.tsx
+```
+
+---
+
+## Lead Detail Page
+
+Route:
+
+```txt
+/admin/leads/[id]
+```
+
+Purpose:
+
+View a specific lead.
+
+Features:
+
+* Contact Details
+* Service Requested
+* Message
+* Status Tracking
+* Notes System
+
+File:
+
+```txt
+app/admin/leads/[id]/page.tsx
+```
+
+---
+
+## Lead Status Management
+
+Available Statuses:
+
+```txt
+new
+contacted
+qualified
+converted
+closed
+```
+
+Action:
+
+```txt
+actions/update-lead-status.ts
+```
+
+Database Column:
+
+```txt
+niveshya.leads.status
+```
+
+---
+
+## Lead Notes
+
+Purpose:
+
+Store internal follow-up information.
+
+Examples:
+
+```txt
+Called client.
+
+Interested in GST package.
+
+Requested proposal.
+
+Follow-up Friday.
+```
+
+Action:
+
+```txt
+actions/create-note.ts
+```
+
+Database Table:
+
+```txt
+niveshya.lead_notes
+```
+
+---
+
+# Database Architecture
+
+Schema:
+
+```txt
+niveshya
+```
+
+---
+
+## users
+
+Purpose:
+
+Administrative users.
+
+Columns:
+
+```txt
+id
+name
+email
+password_hash
+role
+created_at
+```
+
+---
+
+## leads
+
+Purpose:
+
+Store all incoming leads.
+
+Columns:
+
+```txt
+id
+business_name
+contact_person
+phone
+email
+service
+message
+source
+status
+created_at
+updated_at
+```
+
+---
+
+## lead_notes
+
+Purpose:
+
+Store internal notes linked to leads.
+
+Columns:
+
+```txt
+id
+lead_id
+note
+created_at
+```
+
+---
+
+# Server Actions
+
+```txt
+actions/
+│
+├── create-lead.ts
+├── update-lead-status.ts
+└── create-note.ts
+```
+
+Responsibilities:
+
+* Create Leads
+* Update Lead Status
+* Create Notes
+
+---
+
+# Database Connection
+
+```txt
+lib/
+│
+└── neon.ts
+```
+
+Purpose:
+
+Provides Neon PostgreSQL connection.
+
+Technology:
+
+```txt
+@neondatabase/serverless
+```
+
+---
+
+# Current Project Structure
 
 ```txt
 app/
 │
-├── layout.tsx
 ├── page.tsx
+├── layout.tsx
 ├── globals.css
-├── favicon.ico
 │
+├── business/
+│   └── page.tsx
+│
+├── wealth/
+│   └── page.tsx
+│
+└── admin/
+    ├── page.tsx
+    │
+    └── leads/
+        └── [id]/
+            └── page.tsx
+
+actions/
+│
+├── create-lead.ts
+├── update-lead-status.ts
+└── create-note.ts
+
+lib/
+│
+└── neon.ts
+
 components/
 │
-├── about/
-│   └── About.tsx
+├── shared/
+│   └── GatewayHero.tsx
 │
 ├── contact/
 │   └── Contact.tsx
 │
-├── cta/
-│   └── Cta.tsx
-│
-├── features/
-│   └── features.tsx
-│
-├── footer/
-│   └── Footer.tsx
-│
-├── industries/
-│   └── Industries.tsx
-│
+├── about/
 ├── stats/
-│   └── Stats.tsx
-│
+├── industries/
 ├── trust/
-│   └── trust.tsx
+├── footer/
+├── features/
+├── cta/
 │
-└── ui/
-    ├── hero.tsx
-    ├── navbar.tsx
-    ├── button.tsx
-    ├── card.tsx
-    ├── input.tsx
-    ├── textarea.tsx
-    └── other shadcn components
+├── business/
+│
+└── wealth/
 
 public/
 │
-├── logo.png
-├── images/
-└── static assets
+└── assets
 
 .github/
+│
 └── workflows/
     └── docker-image.yml
-
-Dockerfile
-docker-compose.yml
-README.md
 ```
 
 ---
 
-# Website Sections
+# Roadmap
 
-Current homepage layout:
+## Completed
 
-```txt
-Navbar
-Hero
-Stats
-Services
-Industries Served
-About
-Trust
-Contact
-Call To Action
-Footer
-```
-
-Configured in:
-
-```txt
-app/page.tsx
-```
-
----
-
-# Adding New Sections
-
-Create a component:
-
-```txt
-components/testimonials/Testimonials.tsx
-```
-
-Import into:
-
-```txt
-app/page.tsx
-```
-
-Example:
-
-```tsx
-import Testimonials from "@/components/testimonials/Testimonials";
-```
-
-Render:
-
-```tsx
-<Testimonials />
-```
-
----
-
-# Creating New Pages
-
-Example:
-
-```txt
-app/gst-filing/page.tsx
-```
-
-URL becomes:
-
-```txt
-https://niveshya.co.in/gst-filing
-```
-
-Example pages planned:
-
-```txt
-/about
-/contact
-/bookkeeping
-/gst-filing
-/payroll
-/taxation
-```
-
----
-
-# Deployment
-
-Source Code:
-
-GitHub Repository
-
-Container Registry:
-
-Docker Hub
-
-Deployment Method:
-
-```txt
-GitHub Push
-↓
-GitHub Actions
-↓
-Docker Build
-↓
-Docker Hub Push
-↓
-Server Pull
-↓
-Docker Compose Restart
-```
-
----
-
-# Future Roadmap
-
-## Phase 1
-
-* Landing Page
-* Contact Form
-* Responsive Design
-* Basic SEO
-
-## Phase 2
-
-* Lead Storage Database
-* Server Actions
-* Email Notifications
+* Gateway Architecture
+* Business Landing Page
+* Wealth Landing Page
+* Lead Capture
+* Neon Integration
 * Admin Dashboard
-
-## Phase 3
-
-* Blog
-* GST Resources
-* AI SEO Pages
-* Lead Analytics
-
-## Phase 4
-
-* Client Portal
-* Document Upload
-* Accounting Workflow Tracking
+* Lead Details
+* Status Tracking
+* Lead Notes
+* CRM Metrics
 
 ---
 
-# Maintainers
+## In Progress
 
-Niveshya Advisory
+* Authentication
+* Admin Route Protection
 
-Guwahati, Assam, India
+---
 
-Phone:
-+91 1234567890
-+91 1234567890
+## Planned
 
-Email:
-[samplemail@gmail.com](mailto:zahr.abas166@gmail.com)
-
-Website:
-https://niveshya.co.in
+* Search & Filtering
+* Email Notifications
+* WhatsApp Notifications
+* WhatsApp Bot
+* Blog System
+* Client Portal
+* Flutter CRM App
+* Analytics Dashboard
 
 ```
 ```

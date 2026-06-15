@@ -1,3 +1,4 @@
+import { createLead } from "@/actions/create-lead";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -113,41 +114,56 @@ export default function Contact() {
               Tell us about your business requirements and we'll get back to you.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <form
+              action={createLead}
+              className="mt-8 space-y-4"
+            >
 
               <Input
+                name="businessName"
                 placeholder="Business Name"
+                required
               />
 
               <Input
+                name="contactPerson"
                 placeholder="Contact Person"
+                required
               />
 
               <Input
+                name="phone"
                 placeholder="Phone Number"
+                required
               />
 
               <Input
+                type="email"
+                name="email"
                 placeholder="Email Address"
               />
 
               <Input
+                name="service"
                 placeholder="Required Service (GST, Bookkeeping, Payroll, etc.)"
+                required
               />
 
               <Textarea
+                name="message"
                 className="min-h-[140px]"
                 placeholder="Tell us about your accounting or compliance requirements..."
               />
 
               <Button
+                type="submit"
                 className="w-full bg-emerald-600 hover:bg-emerald-700"
                 size="lg"
               >
                 Schedule Consultation
               </Button>
 
-            </div>
+            </form>
 
           </div>
 
