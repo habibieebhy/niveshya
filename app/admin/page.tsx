@@ -2,6 +2,23 @@ import { sql } from "@/lib/neon";
 import Link from "next/link";
 import { logout } from "@/actions/auth/logout";
 
+const getStatusClass = (status: string) => {
+    switch (status) {
+        case "new":
+            return "bg-blue-500/10 text-blue-600";
+        case "contacted":
+            return "bg-amber-500/10 text-amber-600";
+        case "qualified":
+            return "bg-purple-500/10 text-purple-600";
+        case "converted":
+            return "bg-emerald-500/10 text-emerald-600";
+        case "closed":
+            return "bg-zinc-500/10 text-zinc-600";
+        default:
+            return "bg-muted text-muted-foreground";
+    }
+};
+
 export default async function AdminPage() {
     const leads = await sql`
         SELECT *
@@ -27,7 +44,7 @@ export default async function AdminPage() {
         <main className="min-h-screen bg-background">
             <div className="mx-auto max-w-7xl px-6 py-12">
                 
-                {/* Header */}
+                {/* Header Navbar */}
                 <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                         <p className="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-600">
@@ -42,17 +59,32 @@ export default async function AdminPage() {
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
+                        <Link
+                            href="/admin"
+                            className="rounded-xl bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition"
+                        >
+                            Dashboard
+                        </Link>
+
                         <Link
                             href="/admin/users"
                             className="rounded-xl border px-4 py-2 hover:bg-muted transition"
                         >
                             Users
                         </Link>
+
+                        <Link
+                            href="/admin/settings"
+                            className="rounded-xl border px-4 py-2 hover:bg-muted transition"
+                        >
+                            Settings
+                        </Link>
+
                         <form action={logout}>
                             <button
                                 type="submit"
-                                className="rounded-xl bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition"
+                                className="rounded-xl border px-4 py-2 hover:bg-muted transition"
                             >
                                 Logout
                             </button>
@@ -60,43 +92,51 @@ export default async function AdminPage() {
                     </div>
                 </div>
 
-                {/* Metrics */}
+                {/* Clickable Metrics */}
                 <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mb-12">
-                    <div className="rounded-3xl border bg-card p-8">
-                        <p className="text-sm text-muted-foreground">
-                            Total Leads
-                        </p>
-                        <h2 className="mt-4 text-5xl font-bold">
-                            {totalLeads}
-                        </h2>
-                    </div>
+                    <Link href="/admin" className="block group">
+                        <div className="h-full rounded-3xl border bg-card p-8 transition-all duration-300 group-hover:border-emerald-500/50 group-hover:shadow-md group-hover:-translate-y-1">
+                            <p className="text-sm text-muted-foreground">
+                                Total Leads
+                            </p>
+                            <h2 className="mt-4 text-5xl font-bold">
+                                {totalLeads}
+                            </h2>
+                        </div>
+                    </Link>
 
-                    <div className="rounded-3xl border bg-card p-8">
-                        <p className="text-sm text-muted-foreground">
-                            New Leads
-                        </p>
-                        <h2 className="mt-4 text-5xl font-bold text-emerald-600">
-                            {newLeads}
-                        </h2>
-                    </div>
+                    <Link href="/admin?status=new" className="block group">
+                        <div className="h-full rounded-3xl border bg-card p-8 transition-all duration-300 group-hover:border-blue-500/50 group-hover:shadow-md group-hover:-translate-y-1">
+                            <p className="text-sm text-muted-foreground">
+                                New Leads
+                            </p>
+                            <h2 className="mt-4 text-5xl font-bold text-blue-600">
+                                {newLeads}
+                            </h2>
+                        </div>
+                    </Link>
 
-                    <div className="rounded-3xl border bg-card p-8">
-                        <p className="text-sm text-muted-foreground">
-                            Contacted
-                        </p>
-                        <h2 className="mt-4 text-5xl font-bold">
-                            {contactedLeads}
-                        </h2>
-                    </div>
+                    <Link href="/admin?status=contacted" className="block group">
+                        <div className="h-full rounded-3xl border bg-card p-8 transition-all duration-300 group-hover:border-amber-500/50 group-hover:shadow-md group-hover:-translate-y-1">
+                            <p className="text-sm text-muted-foreground">
+                                Contacted
+                            </p>
+                            <h2 className="mt-4 text-5xl font-bold text-amber-600">
+                                {contactedLeads}
+                            </h2>
+                        </div>
+                    </Link>
 
-                    <div className="rounded-3xl border bg-card p-8">
-                        <p className="text-sm text-muted-foreground">
-                            Converted
-                        </p>
-                        <h2 className="mt-4 text-5xl font-bold">
-                            {convertedLeads}
-                        </h2>
-                    </div>
+                    <Link href="/admin?status=converted" className="block group">
+                        <div className="h-full rounded-3xl border bg-card p-8 transition-all duration-300 group-hover:border-emerald-500/50 group-hover:shadow-md group-hover:-translate-y-1">
+                            <p className="text-sm text-muted-foreground">
+                                Converted
+                            </p>
+                            <h2 className="mt-4 text-5xl font-bold text-emerald-600">
+                                {convertedLeads}
+                            </h2>
+                        </div>
+                    </Link>
                 </div>
 
                 {/* Leads Section */}
@@ -171,7 +211,9 @@ export default async function AdminPage() {
                                         <p className="text-sm text-muted-foreground">
                                             Status
                                         </p>
-                                        <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-600">
+                                        <span
+                                            className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium capitalize ${getStatusClass(lead.status)}`}
+                                        >
                                             {lead.status}
                                         </span>
                                     </div>

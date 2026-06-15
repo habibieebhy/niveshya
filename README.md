@@ -1,100 +1,8 @@
-# Niveshya Advisory Platform
-
-Professional Accounting, Taxation, Compliance & Wealth Advisory Platform built using Next.js 16, React 19, Tailwind CSS v4, shadcn/ui and Neon PostgreSQL.
-
----
-
-# Project Overview
-
-Niveshya Advisory operates as a dual-service platform:
-
-## Business Services
-
-Target Audience:
-
-* SMEs
-* Proprietorship Firms
-* Partnership Firms
-* Trading & Distribution Businesses
-* Service-Based Companies
-
-Services:
-
-* Accounting & Bookkeeping
-* GST Compliance
-* Payroll Processing
-* TDS Compliance
-* Financial Reporting
-* MIS Reporting
-* Inventory Accounting
-
-Route:
-
-```txt
-/business
-```
-
----
-
-## Wealth Advisory
-
-Target Audience:
-
-* Salaried Professionals
-* Business Owners
-* Families
-* NRIs
-
-Services:
-
-* Mutual Funds
-* SIP Planning
-* Insurance Advisory
-* Retirement Planning
-* Goal-Based Financial Planning
-
-Route:
-
-```txt
-/wealth
-```
-
----
-
-# Application Architecture
-
-```txt
-Visitor
-   │
-   ▼
-Gateway Page (/)
-   │
-   ├── /business
-   │
-   └── /wealth
-
-Business / Wealth Pages
-   │
-   ▼
-Contact Forms
-   │
-   ▼
-Next.js Server Actions
-   │
-   ▼
-Neon PostgreSQL
-   │
-   ▼
-Admin CRM Dashboard
-```
-
----
-
 # Current Features
 
 ## Public Website
 
-### Gateway Page
+### Gateway Landing Page
 
 Route:
 
@@ -104,7 +12,9 @@ Route:
 
 Purpose:
 
-Allows visitors to choose between:
+Allows visitors to self-identify and navigate to the correct service vertical.
+
+Options:
 
 * Business Services
 * Wealth Advisory
@@ -117,7 +27,7 @@ components/shared/GatewayHero.tsx
 
 ---
 
-### Business Website
+### Business Services Website
 
 Route:
 
@@ -125,21 +35,31 @@ Route:
 /business
 ```
 
-Contains:
+Purpose:
+
+Primary website for accounting, taxation and compliance services.
+
+Sections:
 
 * Hero
 * Statistics
 * Services
-* Industries
+* Industries Served
 * About
 * Trust
 * Contact Form
-* CTA
+* Call To Action
 * Footer
+
+Lead Form:
+
+```txt
+components/contact/Contact.tsx
+```
 
 ---
 
-### Wealth Website
+### Wealth Advisory Website
 
 Route:
 
@@ -147,12 +67,16 @@ Route:
 /wealth
 ```
 
-Contains:
+Purpose:
+
+Primary website for financial planning and wealth advisory services.
+
+Sections:
 
 * Wealth Hero
 * Investment Planning
-* Insurance Services
-* Goal Planning
+* Insurance Solutions
+* Goal-Based Planning
 * Advisory Trust
 * Wealth CTA
 
@@ -162,15 +86,17 @@ Contains:
 
 ## Lead Capture
 
-When a visitor submits a contact form:
+Workflow:
 
 ```txt
-Form
-  ↓
+Visitor
+   ↓
+Contact Form
+   ↓
 Server Action
-  ↓
+   ↓
 Neon Database
-  ↓
+   ↓
 Lead Created
 ```
 
@@ -188,7 +114,67 @@ niveshya.leads
 
 ---
 
-## Admin Dashboard
+## Admin Authentication
+
+Purpose:
+
+Secure access to CRM resources.
+
+Features:
+
+* Email Login
+* Password Verification
+* Bcrypt Password Hashing
+* JWT Session Creation
+* Cookie-Based Authentication
+* Logout Functionality
+
+Files:
+
+```txt
+actions/auth/login.ts
+actions/auth/logout.ts
+lib/auth/session.ts
+```
+
+---
+
+## Route Protection
+
+Purpose:
+
+Prevent unauthenticated users from accessing CRM resources.
+
+Protected Routes:
+
+```txt
+/admin
+/admin/leads/[id]
+```
+
+Implementation:
+
+```txt
+proxy.ts
+```
+
+Workflow:
+
+```txt
+Request
+   ↓
+Session Cookie Check
+   ↓
+Authenticated?
+   │
+   ├── YES → Continue
+   │
+   └── NO → Redirect Login
+```
+
+---
+
+## CRM Dashboard
 
 Route:
 
@@ -198,15 +184,18 @@ Route:
 
 Purpose:
 
-View all leads.
+Central lead management dashboard.
 
 Features:
 
-* Total Leads
-* New Leads
-* Contacted Leads
-* Converted Leads
-* Recent Lead List
+* Dashboard Metrics
+* Total Leads Counter
+* New Leads Counter
+* Contacted Leads Counter
+* Converted Leads Counter
+* Lead Listing
+* Lead Status Overview
+* Logout Access
 
 File:
 
@@ -216,7 +205,7 @@ app/admin/page.tsx
 
 ---
 
-## Lead Detail Page
+## Lead Detail Management
 
 Route:
 
@@ -226,15 +215,17 @@ Route:
 
 Purpose:
 
-View a specific lead.
+View and manage individual leads.
 
 Features:
 
-* Contact Details
-* Service Requested
-* Message
-* Status Tracking
-* Notes System
+* Business Information
+* Contact Information
+* Service Information
+* Lead Message
+* Status Updates
+* Internal Notes
+* Lead Timeline
 
 File:
 
@@ -244,7 +235,7 @@ app/admin/leads/[id]/page.tsx
 
 ---
 
-## Lead Status Management
+## Lead Status Tracking
 
 Available Statuses:
 
@@ -270,20 +261,20 @@ niveshya.leads.status
 
 ---
 
-## Lead Notes
+## Lead Notes System
 
 Purpose:
 
-Store internal follow-up information.
+Store internal follow-up notes and conversation history.
 
 Examples:
 
 ```txt
 Called client.
 
-Interested in GST package.
+Interested in GST compliance package.
 
-Requested proposal.
+Requested pricing proposal.
 
 Follow-up Friday.
 ```
@@ -316,7 +307,7 @@ niveshya
 
 Purpose:
 
-Administrative users.
+CRM users and authentication.
 
 Columns:
 
@@ -329,13 +320,22 @@ role
 created_at
 ```
 
+Current Roles Planned:
+
+```txt
+super_admin
+admin
+employee
+viewer
+```
+
 ---
 
 ## leads
 
 Purpose:
 
-Store all incoming leads.
+Store all incoming website leads.
 
 Columns:
 
@@ -359,7 +359,7 @@ updated_at
 
 Purpose:
 
-Store internal notes linked to leads.
+Store internal CRM notes linked to leads.
 
 Columns:
 
@@ -378,39 +378,44 @@ created_at
 actions/
 │
 ├── create-lead.ts
+├── create-note.ts
 ├── update-lead-status.ts
-└── create-note.ts
+│
+└── auth/
+    ├── login.ts
+    └── logout.ts
 ```
 
 Responsibilities:
 
 * Create Leads
-* Update Lead Status
 * Create Notes
+* Update Lead Status
+* Authenticate Users
+* Create Sessions
+* Logout Users
 
 ---
 
-# Database Connection
+# Authentication Architecture
 
 ```txt
-lib/
-│
-└── neon.ts
-```
-
-Purpose:
-
-Provides Neon PostgreSQL connection.
-
-Technology:
-
-```txt
-@neondatabase/serverless
+User Login
+    ↓
+Neon Users Table
+    ↓
+Bcrypt Verification
+    ↓
+JWT Session Creation
+    ↓
+Cookie Storage
+    ↓
+CRM Access
 ```
 
 ---
 
-# Current Project Structure
+# Project Structure
 
 ```txt
 app/
@@ -426,7 +431,11 @@ app/
 │   └── page.tsx
 │
 └── admin/
+    │
     ├── page.tsx
+    │
+    ├── login/
+    │   └── page.tsx
     │
     └── leads/
         └── [id]/
@@ -435,79 +444,101 @@ app/
 actions/
 │
 ├── create-lead.ts
+├── create-note.ts
 ├── update-lead-status.ts
-└── create-note.ts
+│
+└── auth/
+    ├── login.ts
+    └── logout.ts
 
 lib/
 │
-└── neon.ts
+├── neon.ts
+│
+└── auth/
+    └── session.ts
 
-components/
-│
-├── shared/
-│   └── GatewayHero.tsx
-│
-├── contact/
-│   └── Contact.tsx
-│
-├── about/
-├── stats/
-├── industries/
-├── trust/
-├── footer/
-├── features/
-├── cta/
-│
-├── business/
-│
-└── wealth/
-
-public/
-│
-└── assets
-
-.github/
-│
-└── workflows/
-    └── docker-image.yml
+proxy.ts
 ```
 
 ---
 
-# Roadmap
+# Completed Milestones
 
-## Completed
-
-* Gateway Architecture
-* Business Landing Page
-* Wealth Landing Page
-* Lead Capture
-* Neon Integration
-* Admin Dashboard
-* Lead Details
-* Status Tracking
-* Lead Notes
-* CRM Metrics
-
----
-
-## In Progress
-
-* Authentication
-* Admin Route Protection
+* Gateway Landing Architecture
+* Business Services Website
+* Wealth Advisory Website
+* Contact Form Integration
+* Neon Database Integration
+* Lead Capture System
+* CRM Dashboard
+* Lead Details View
+* Lead Status Management
+* Internal Notes System
+* Dashboard Metrics
+* Authentication System
+* JWT Sessions
+* Logout Functionality
+* Route Protection
 
 ---
 
-## Planned
+# Current Development Phase
 
+## Phase 3 - CRM Expansion
+
+Currently Building:
+
+* User Management
+* Role Based Access Control (RBAC)
+* User Creation Interface
+* User Editing Interface
+* User Deletion Interface
+
+---
+
+# Planned Features
+
+## CRM Enhancements
+
+* User Management Dashboard
 * Search & Filtering
+* Lead Assignment
+* Activity Timeline
+* Audit Logs
+
+## Notifications
+
 * Email Notifications
 * WhatsApp Notifications
-* WhatsApp Bot
+* WhatsApp Bot Integration
+
+## Marketing
+
 * Blog System
-* Client Portal
-* Flutter CRM App
-* Analytics Dashboard
+* GST Resource Center
+* SEO Content Engine
+
+## Client Portal
+
+* Client Login
+* Document Upload
+* Compliance Tracking
+* Service Requests
+
+## Mobile
+
+* Flutter CRM Application
+* Lead Management
+* WhatsApp Inbox
+* Team Dashboard
+
+## Analytics
+
+* Lead Analytics
+* Conversion Tracking
+* Revenue Tracking
+* Team Performance Dashboard
 
 ```
 ```
