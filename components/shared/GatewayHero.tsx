@@ -34,7 +34,7 @@ export default function GatewayHero() {
         {/* Service Selection */}
         <div className="grid md:grid-cols-2 gap-8 mt-20">
           <Link
-            href="/business"
+            href="/accounting"
             className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
           >
             <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
