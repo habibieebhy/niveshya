@@ -29,3 +29,5 @@ jobs:
           tags: |
             zahrbrixta/niveshya:v4
             zahrbrixta/niveshya:${{ github.run_number }}
+          build-args: |
+            DATABASE_URL=${{ secrets.DATABASE_URL }}

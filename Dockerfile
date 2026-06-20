@@ -21,6 +21,11 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Pull in the build argument from GitHub Actions
+ARG DATABASE_URL
+# Make it available to Next.js during the build phase
+ENV DATABASE_URL=$DATABASE_URL
+
 RUN npm run build
 
 # =========================

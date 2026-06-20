@@ -7,3 +7,4 @@ services:
       - "5556:3000"
     environment:
       NODE_ENV: production
+      DATABASE_URL: ${DATABASE_URL}
