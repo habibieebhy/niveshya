@@ -1,6 +1,6 @@
 services:
   niveshya:
-    image: zahrbrixta/niveshya:v3
+    image: zahrbrixta/niveshya:v4
     container_name: niveshya
     restart: unless-stopped
     ports:

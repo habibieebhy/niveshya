@@ -28,7 +28,7 @@ export default function Contact() {
 
             <h2 className="mt-4 text-4xl font-bold tracking-tight">
               Let's Discuss Your
-              Accounting Requirements
+              Accounting And Wealth 
             </h2>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">

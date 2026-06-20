@@ -11,16 +11,13 @@ export default function About() {
             </p>
 
             <h2 className="mt-4 text-4xl font-bold tracking-tight">
-              Better investment decisions start with better information.
+              MANAGING TODAY, GROWING TOMORROW
             </h2>
           </div>
 
           <div>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Niveshya is designed to help investors evaluate opportunities,
-              understand risk, and make capital allocation decisions with
-              clarity. Instead of noise, speculation, and endless dashboards,
-              we focus on actionable intelligence.
+              Niveshya Accounting Advisory provides professional accounting, taxation, GST compliance and outsourced finance support to SMEs, traders, proprietorships and partnership firms. Our focus is to help businesses maintain accurate records, stay compliant and improve financial efficiency.
             </p>
           </div>
 

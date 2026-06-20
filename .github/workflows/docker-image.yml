@@ -27,5 +27,5 @@ jobs:
           context: .
           push: true
           tags: |
-            zahrbrixta/niveshya:v3
+            zahrbrixta/niveshya:v4
             zahrbrixta/niveshya:${{ github.run_number }}
