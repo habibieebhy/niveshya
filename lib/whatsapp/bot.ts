@@ -40,24 +40,17 @@ export async function processIncomingMessage(
           "MENU",
       });
 
-    return `👋 Welcome to Niveshya
-
-Helping businesses stay compliant and families build long-term wealth.
-
-How can we help you today?
-
-📊 Business Services
-
-💰 Wealth Advisory
-
-☎️ Connect With An Advisor`;
+    return `MENU`;
   }
 
   if (
     session.currentStep ===
     "MENU"
   ) {
-    if (text === "1") {
+    if (
+      text === "1" ||
+      text === "accounting"
+    ) {
       await db
         .update(
           whatsappSessions
@@ -106,7 +99,10 @@ Example:
 1,2,10`;
     }
 
-    if (text === "2") {
+    if (
+      text === "2" ||
+      text === "wealth"
+    ) {
       await db
         .update(
           whatsappSessions
@@ -132,7 +128,10 @@ To help our advisors understand your requirements better,
 📍 Please share your city or location.`;
     }
 
-    if (text === "3") {
+    if (
+      text === "3" ||
+      text === "advisor"
+    ) {
       return `☎️ Connect With An Advisor
 
 Thank you for contacting Niveshya.
@@ -147,15 +146,5 @@ You can also continue messaging here anytime.`;
     }
   }
 
-  return `👋 Welcome to Niveshya
-
-Helping businesses stay compliant and families build long-term wealth.
-
-How can we help you today?
-
-1️⃣ Business Services
-
-2️⃣ Wealth Advisory
-
-3️⃣ Connect With An Advisor`;
+  return `MENU`;
 }

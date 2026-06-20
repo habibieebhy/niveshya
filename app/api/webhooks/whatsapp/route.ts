@@ -1,9 +1,13 @@
 import { NextRequest } from "next/server";
-import { processIncomingMessage }
-  from "@/lib/whatsapp/bot";
 
-import { sendWhatsappMessage }
-  from "@/lib/whatsapp/send-message";
+import {
+  processIncomingMessage,
+} from "@/lib/whatsapp/bot";
+
+import {
+  sendWhatsappMessage,
+  sendWhatsappButtons,
+} from "@/lib/whatsapp/send-message";
 
 import { db } from "@/db";
 
@@ -39,12 +43,16 @@ export async function GET(
     mode === "subscribe" &&
     token === process.env.WHATSAPP_VERIFY_TOKEN
   ) {
-    return new Response(challenge);
+    return new Response(
+      challenge
+    );
   }
 
   return new Response(
     "Forbidden",
-    { status: 403 }
+    {
+      status: 403,
+    }
   );
 }
 
@@ -78,8 +86,26 @@ export async function POST(
     const phone =
       message.from;
 
-    const text =
-      message.text?.body ?? "";
+    let text = "";
+
+    if (
+      message.type === "text"
+    ) {
+      text =
+        message.text?.body ??
+        "";
+    }
+
+    if (
+      message.type ===
+      "interactive"
+    ) {
+      text =
+        message
+          ?.interactive
+          ?.button_reply
+          ?.id ?? "";
+    }
 
     const name =
       body?.entry?.[0]
@@ -106,6 +132,30 @@ export async function POST(
         name,
         text
       );
+
+    if (
+      reply === "MENU"
+    ) {
+      await sendWhatsappButtons(
+        phone
+      );
+
+      await db
+        .insert(
+          whatsappMessages
+        )
+        .values({
+          phone,
+          direction:
+            "outbound",
+          messageText:
+            "MENU_BUTTONS",
+        });
+
+      return Response.json({
+        received: true,
+      });
+    }
 
     await sendWhatsappMessage(
       phone,
