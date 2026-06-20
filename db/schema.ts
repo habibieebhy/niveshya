@@ -40,24 +40,37 @@ export const leads = niveshya.table(
       .primaryKey()
       .defaultRandom(),
 
-    businessName: text("business_name")
-      .notNull(),
+    businessName: text("business_name"),
 
-    contactPerson: text("contact_person")
-      .notNull(),
+    contactPerson: text("contact_person"),
 
     phone: text("phone")
       .notNull(),
 
     email: text("email"),
 
-    service: text("service")
-      .notNull(),
+    service: text("service"),
 
     message: text("message"),
 
     source: text("source")
       .default("website"),
+
+    leadType: text("lead_type"),
+
+    city: text("city"),
+
+    ageRange: text("age_range"),
+
+    incomeRange: text("income_range"),
+
+    familySize: text("family_size"),
+
+    wealthInterest: text("wealth_interest"),
+
+    servicesRequested: text(
+      "services_requested"
+    ),
 
     status: text("status")
       .default("new"),
@@ -97,12 +110,36 @@ export const whatsappSessions =
 
       leadId: uuid("lead_id"),
 
-      serviceType: text(
-        "service_type"
+      flowType: text(
+        "flow_type"
       ),
 
       currentStep: text(
         "current_step"
+      ),
+
+      name: text("name"),
+
+      city: text("city"),
+
+      ageRange: text(
+        "age_range"
+      ),
+
+      incomeRange: text(
+        "income_range"
+      ),
+
+      familySize: text(
+        "family_size"
+      ),
+
+      wealthInterest: text(
+        "wealth_interest"
+      ),
+
+      selectedServices: text(
+        "selected_services"
       ),
 
       updatedAt: timestamp(

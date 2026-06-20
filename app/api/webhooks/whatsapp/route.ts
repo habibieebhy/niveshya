@@ -1,4 +1,15 @@
 import { NextRequest } from "next/server";
+import { processIncomingMessage }
+  from "@/lib/whatsapp/bot";
+
+import { sendWhatsappMessage }
+  from "@/lib/whatsapp/send-message";
+
+import { db } from "@/db";
+
+import {
+  whatsappMessages,
+} from "@/db/schema";
 
 export async function GET(
   request: NextRequest
@@ -40,14 +51,94 @@ export async function GET(
 export async function POST(
   request: Request
 ) {
-  const body = await request.json();
+  const body =
+    await request.json();
 
   console.log(
     "WHATSAPP WEBHOOK:",
-    JSON.stringify(body, null, 2)
+    JSON.stringify(
+      body,
+      null,
+      2
+    )
   );
 
-  return Response.json({
-    received: true,
-  });
+  try {
+    const message =
+      body?.entry?.[0]
+        ?.changes?.[0]
+        ?.value?.messages?.[0];
+
+    if (!message) {
+      return Response.json({
+        received: true,
+      });
+    }
+
+    const phone =
+      message.from;
+
+    const text =
+      message.text?.body ?? "";
+
+    const name =
+      body?.entry?.[0]
+        ?.changes?.[0]
+        ?.value?.contacts?.[0]
+        ?.profile?.name ??
+      "Unknown";
+
+    await db
+      .insert(
+        whatsappMessages
+      )
+      .values({
+        phone,
+        direction:
+          "inbound",
+        messageText:
+          text,
+      });
+
+    const reply =
+      await processIncomingMessage(
+        phone,
+        name,
+        text
+      );
+
+    await sendWhatsappMessage(
+      phone,
+      reply
+    );
+
+    await db
+      .insert(
+        whatsappMessages
+      )
+      .values({
+        phone,
+        direction:
+          "outbound",
+        messageText:
+          reply,
+      });
+
+    return Response.json({
+      received: true,
+    });
+  } catch (error) {
+    console.error(
+      error
+    );
+
+    return Response.json(
+      {
+        received: false,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
