@@ -44,7 +44,7 @@ export default function WhoWeHelp() {
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold">
-            Different Goals.
+            Different Goals...
             <br />
             Different Lives.
             <br />
