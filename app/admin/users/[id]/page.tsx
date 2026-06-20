@@ -1,4 +1,7 @@
-import { sql } from "@/lib/neon";
+import { eq } from "drizzle-orm";
+
+import { db } from "@/db";
+import { users } from "@/db/schema";
 import { resetPassword } from "@/actions/users/reset-password";
 
 export default async function UserPage({
@@ -8,14 +11,16 @@ export default async function UserPage({
 }) {
   const { id } = await params;
 
-  const users = await sql`
-    SELECT *
-    FROM niveshya.users
-    WHERE id = ${id}
-    LIMIT 1
-  `;
-
-  const user = users[0];
+  const user = await db
+    .select()
+    .from(users)
+    .where(
+      eq(users.id, id)
+    )
+    .limit(1)
+    .then(
+      (rows) => rows[0]
+    );
 
   if (!user) {
     return (
@@ -27,15 +32,12 @@ export default async function UserPage({
 
   return (
     <main className="min-h-screen bg-background">
-
       <div className="mx-auto max-w-4xl px-6 py-12">
-
         <h1 className="text-5xl font-bold mb-8">
           {user.name}
         </h1>
 
         <div className="rounded-3xl border bg-card p-8">
-
           <p>
             <strong>Email:</strong>{" "}
             {user.email}
@@ -56,7 +58,6 @@ export default async function UserPage({
             action={resetPassword}
             className="space-y-4"
           >
-
             <input
               type="hidden"
               name="id"
@@ -88,13 +89,9 @@ export default async function UserPage({
             >
               Reset Password
             </button>
-
           </form>
-
         </div>
-
       </div>
-
     </main>
   );
 }

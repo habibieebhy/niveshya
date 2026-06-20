@@ -1,23 +1,32 @@
 "use server";
 
-import { sql } from "@/lib/neon";
+import { db } from "@/db";
+import { leadNotes } from "@/db/schema";
+import { createNoteSchema } from "@/db/zod";
 
 export async function createNote(
   formData: FormData
 ): Promise<void> {
-  const leadId = formData.get("leadId") as string;
-  const note = formData.get("note") as string;
+  const validated =
+    createNoteSchema.parse({
+      leadId:
+        formData.get("leadId"),
+      note:
+        formData.get("note"),
+    });
 
-  if (!note?.trim()) return;
+  if (
+    !validated.note.trim()
+  ) {
+    return;
+  }
 
-  await sql`
-    INSERT INTO niveshya.lead_notes (
-      lead_id,
-      note
-    )
-    VALUES (
-      ${leadId},
-      ${note}
-    )
-  `;
+  await db.insert(
+    leadNotes
+  ).values({
+    leadId:
+      validated.leadId,
+    note:
+      validated.note,
+  });
 }

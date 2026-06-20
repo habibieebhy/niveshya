@@ -1,16 +1,29 @@
 "use server";
 
-import { sql } from "@/lib/neon";
+import { eq } from "drizzle-orm";
+
+import { db } from "@/db";
+import { leads } from "@/db/schema";
+import { updateLeadStatusSchema } from "@/db/zod";
 
 export async function updateLeadStatus(
   formData: FormData
 ): Promise<void> {
-  const id = formData.get("id") as string;
-  const status = formData.get("status") as string;
+  const validated =
+    updateLeadStatusSchema.parse({
+      id: formData.get("id"),
+      status: formData.get("status"),
+    });
 
-  await sql`
-    UPDATE niveshya.leads
-    SET status = ${status}
-    WHERE id = ${id}
-  `;
+  await db
+    .update(leads)
+    .set({
+      status: validated.status,
+    })
+    .where(
+      eq(
+        leads.id,
+        validated.id
+      )
+    );
 }

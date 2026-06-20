@@ -1,31 +1,43 @@
 "use server";
 
 import bcrypt from "bcryptjs";
-import { sql } from "@/lib/neon";
+
+import { db } from "@/db";
+import { users } from "@/db/schema";
+import { createUserWithPasswordSchema } from "@/db/zod";
 
 export async function createUser(
   formData: FormData
 ): Promise<void> {
-  const name = formData.get("name") as string;
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  const role = formData.get("role") as string;
+  const name =
+    formData.get("name") as string;
 
-  const passwordHash =
-    await bcrypt.hash(password, 10);
+  const email =
+    formData.get("email") as string;
 
-  await sql`
-    INSERT INTO niveshya.users (
+  const password =
+    formData.get("password") as string;
+
+  const role =
+    formData.get("role") as string;
+
+  const validated =
+    createUserWithPasswordSchema.parse({
       name,
       email,
-      password_hash,
-      role
-    )
-    VALUES (
-      ${name},
-      ${email},
-      ${passwordHash},
-      ${role}
-    )
-  `;
+      role,
+      password,
+    });
+
+  const passwordHash =
+    await bcrypt.hash(
+      validated.password,
+      10
+    );
+  await db.insert(users).values({
+    name: validated.name,
+    email: validated.email,
+    role: validated.role,
+    passwordHash,
+  });
 }

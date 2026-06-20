@@ -1,10 +1,13 @@
 "use server";
 
-import { sql } from "@/lib/neon";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { createSession } from "@/lib/auth/session";
+import { eq } from "drizzle-orm";
+
+import { db } from "@/db";
+import { users } from "@/db/schema";
+import { createSession } from "@/db/session";
 
 export async function login(
   formData: FormData
@@ -12,14 +15,12 @@ export async function login(
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  const users = await sql`
-    SELECT *
-    FROM niveshya.users
-    WHERE email = ${email}
-    LIMIT 1
-  `;
-
-  const user = users[0];
+  const user = await db
+    .select()
+    .from(users)
+    .where(eq(users.email, email))
+    .limit(1)
+    .then((rows) => rows[0]);
 
   if (!user) {
     console.log("USER NOT FOUND");
@@ -28,7 +29,7 @@ export async function login(
 
   const validPassword = await bcrypt.compare(
     password,
-    user.password_hash
+    user.passwordHash
   );
 
   if (!validPassword) {

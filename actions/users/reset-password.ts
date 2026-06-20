@@ -1,23 +1,38 @@
 "use server";
 
 import bcrypt from "bcryptjs";
-import { sql } from "@/lib/neon";
+import { eq } from "drizzle-orm";
+
+import { db } from "@/db";
+import { users } from "@/db/schema";
+import { resetPasswordSchema } from "@/db/zod";
 
 export async function resetPassword(
   formData: FormData
 ): Promise<void> {
-  const id = formData.get("id") as string;
-  const password =
-    formData.get("password") as string;
+  const validated =
+    resetPasswordSchema.parse({
+      id: formData.get("id"),
+      password: formData.get("password"),
+    });
 
   const passwordHash =
-    await bcrypt.hash(password, 10);
+    await bcrypt.hash(
+      validated.password,
+      10
+    );
 
-  await sql`
-    UPDATE niveshya.users
-    SET password_hash = ${passwordHash}
-    WHERE id = ${id}
-  `;
+  await db
+    .update(users)
+    .set({
+      passwordHash,
+    })
+    .where(
+      eq(
+        users.id,
+        validated.id
+      )
+    );
 
   console.log(
     "PASSWORD RESET SUCCESS"

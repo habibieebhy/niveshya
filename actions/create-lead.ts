@@ -1,49 +1,62 @@
 "use server";
 
-import { sql } from "@/lib/neon";
+import { db } from "@/db";
+import { leads } from "@/db/schema";
+import { createLeadSchema } from "@/db/zod";
 
-export async function createLead(formData: FormData): Promise<void> {
-  console.log("🚀 SERVER ACTION HIT");
+export async function createLead(
+  formData: FormData
+): Promise<void> {
+  console.log(
+    "🚀 SERVER ACTION HIT"
+  );
 
   try {
-    const businessName = formData.get("businessName") as string;
-    const contactPerson = formData.get("contactPerson") as string;
-    const phone = formData.get("phone") as string;
-    const email = formData.get("email") as string;
-    const service = formData.get("service") as string;
-    const message = formData.get("message") as string;
+    const validated =
+      createLeadSchema.parse({
+        businessName:
+          formData.get(
+            "businessName"
+          ),
+        contactPerson:
+          formData.get(
+            "contactPerson"
+          ),
+        phone:
+          formData.get("phone"),
+        email:
+          formData.get("email"),
+        service:
+          formData.get("service"),
+        message:
+          formData.get("message"),
+      });
 
-    console.log({
-      businessName,
-      contactPerson,
-      phone,
-      email,
-      service,
-      message,
+    console.log(validated);
+
+    await db.insert(leads).values({
+      businessName:
+        validated.businessName,
+      contactPerson:
+        validated.contactPerson,
+      phone:
+        validated.phone,
+      email:
+        validated.email,
+      service:
+        validated.service,
+      message:
+        validated.message,
     });
 
-    await sql`
-      INSERT INTO niveshya.leads (
-        business_name,
-        contact_person,
-        phone,
-        email,
-        service,
-        message
-      )
-      VALUES (
-        ${businessName},
-        ${contactPerson},
-        ${phone},
-        ${email},
-        ${service},
-        ${message}
-      )
-    `;
-
-    console.log("✅ Lead Created Successfully");
+    console.log(
+      "✅ Lead Created Successfully"
+    );
   } catch (error) {
-    console.error("❌ Create Lead Error:");
+    console.error(
+      "❌ Create Lead Error:"
+    );
+
     console.error(error);
   }
 }
