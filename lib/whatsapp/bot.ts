@@ -40,13 +40,17 @@ export async function processIncomingMessage(
           "MENU",
       });
 
-    return `Welcome to Niveshya 👋
+    return `👋 Welcome to Niveshya
 
-1️⃣ Accounting & Compliance
+Helping businesses stay compliant and families build long-term wealth.
 
-2️⃣ Wealth Advisory
+How can we help you today?
 
-3️⃣ Speak to Advisor`;
+📊 Business Services
+
+💰 Wealth Advisory
+
+☎️ Connect With An Advisor`;
   }
 
   if (
@@ -72,18 +76,31 @@ export async function processIncomingMessage(
           )
         );
 
-      return `Select one or more services:
+      return `📊 Business Services
 
-1. Accounting & Bookkeeping
-2. GST Compliance
-3. TDS & Professional Tax Compliance
-4. Bank Reconciliation
-5. MIS Reporting
-6. Vendor Management
-7. Billing & Ledger
-8. E-Way Bill & E-Invoice
-9. Inventory Accounting
-10. Payroll Support
+Please select the services you're interested in:
+
+1️⃣ Accounting & Bookkeeping
+
+2️⃣ GST Compliance & Return Filing
+
+3️⃣ TDS & Professional Tax Compliance
+
+4️⃣ Bank, Debtor & Creditor Reconciliation
+
+5️⃣ MIS & Financial Reporting
+
+6️⃣ Accounts Payable & Vendor Management
+
+7️⃣ Billing & Ledger Management
+
+8️⃣ E-Way Bill & E-Invoice Generation
+
+9️⃣ Inventory & Stock Accounting
+
+🔟 Payroll Support & Salary Processing
+
+You may select multiple services.
 
 Example:
 1,2,10`;
@@ -108,19 +125,37 @@ Example:
           )
         );
 
-      return `📍 Please share your city.`;
+      return `💰 Wealth Advisory
+
+To help our advisors understand your requirements better,
+
+📍 Please share your city or location.`;
     }
 
     if (text === "3") {
-      return `Our advisor will contact you shortly.`;
+      return `☎️ Connect With An Advisor
+
+Thank you for contacting Niveshya.
+
+One of our advisors will review your requirements and contact you shortly.
+
+If you would prefer to speak with us directly, you may call:
+
+📞 +91 90223 91182
+
+You can also continue messaging here anytime.`;
     }
   }
 
-  return `Please choose:
+  return `👋 Welcome to Niveshya
 
-1️⃣ Accounting & Compliance
+Helping businesses stay compliant and families build long-term wealth.
+
+How can we help you today?
+
+1️⃣ Business Services
 
 2️⃣ Wealth Advisory
 
-3️⃣ Speak to Advisor`;
+3️⃣ Connect With An Advisor`;
 }
