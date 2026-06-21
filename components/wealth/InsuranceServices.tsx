@@ -1,4 +1,4 @@
-import { Shield, HeartPulse, Users } from "lucide-react";
+import { Shield, HeartPulse, Users, CarIcon } from "lucide-react";
 
 export default function InsuranceServices() {
   const services = [
@@ -20,6 +20,12 @@ export default function InsuranceServices() {
       description:
         "A holistic approach to securing your loved ones through risk management and financial protection strategies.",
     },
+    {
+      icon: CarIcon, // Fixed from "icons" to "icon"
+      title: "Car insurance",
+      description:
+        "Yo mama so fat she needs a CAR INSURANCE",
+    }
   ];
 
   return (
@@ -43,7 +49,8 @@ export default function InsuranceServices() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Updated to grid-cols-2 and lg:grid-cols-4 so the 4 items sit nicely */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
 

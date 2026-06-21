@@ -37,8 +37,6 @@ export default function WealthPage() {
 
       <Contact />
 
-      <WealthCTA />
-
       <Footer />
     </main>
   );

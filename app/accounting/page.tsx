@@ -31,8 +31,6 @@ export default function BusinessPage() {
 
       <Contact />
 
-      <Cta />
-
       <Footer />
 
     </main>
