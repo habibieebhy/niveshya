@@ -17,10 +17,10 @@ export default function ServiceSwitcher() {
         </span>
 
         <Link
-          href="/business"
+          href="/accounting"
           className="hover:text-primary transition-colors"
         >
-          Business Services
+          Accounting Services
         </Link>
 
         <span className="text-muted-foreground">

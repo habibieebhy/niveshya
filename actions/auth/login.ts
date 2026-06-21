@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
-
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { createSession } from "@/db/session";
