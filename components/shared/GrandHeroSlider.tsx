@@ -20,15 +20,15 @@ const slides = [
     id: 1,
     image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop", 
     heading: "Long-Term Wealth.",
-    subheading: "Generational Success",
-    description: "Personalised Investment Planning and Insurance Solutions through Wealth Management for your future Goals"
+    subheading: "Wealth Advisory",
+    description: "Personalised Investment Planning and Insurance Solutions designed to help you build, protect and grow your wealth entirely around your future goals"
   },
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2036&auto=format&fit=crop", 
-    heading: "Accounting Services",
-    subheading: "Corporate Excellence",
-    description: "Scalable accounting, compliance, and outsourced finance operations for ambitious enterprises."
+    heading: "Managing You Accounts",
+    subheading: "Accounting Services",
+    description: "Scalable accounting, taxation, compliance, and outsourced bookkeeping services for MSMEs, Proprietorships, Partnership firms and Professional Consultants helping businesses stay compliant, efficient and growth-focused."
   }
 ];
 
