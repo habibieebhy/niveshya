@@ -4,9 +4,40 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function logout() {
-  const cookieStore = await cookies();
+  console.log(
+    "=========== LOGOUT START ==========="
+  );
 
-  cookieStore.delete("session");
+  const cookieStore =
+    await cookies();
 
-  redirect("/admin/login");
+  console.log(
+    "COOKIE BEFORE DELETE:",
+    cookieStore.get("session")
+  );
+
+  cookieStore.delete(
+    "session"
+  );
+
+  console.log(
+    "COOKIE DELETE CALLED"
+  );
+
+  console.log(
+    "COOKIE AFTER DELETE:",
+    cookieStore.get("session")
+  );
+
+  console.log(
+    "REDIRECTING TO /admin/login"
+  );
+
+  console.log(
+    "=========== LOGOUT END ==========="
+  );
+
+  redirect(
+    "/admin/login"
+  );
 }

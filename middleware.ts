@@ -3,6 +3,20 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(
   request: NextRequest
 ) {
+  console.log(
+    "========== MIDDLEWARE =========="
+  );
+
+  console.log(
+    "PATH:",
+    request.nextUrl.pathname
+  );
+
+  console.log(
+    "SESSION COOKIE:",
+    request.cookies.get("session")
+  );
+
   const session =
     request.cookies.get("session");
 
@@ -20,6 +34,10 @@ export async function middleware(
     !isLoginPage &&
     !session
   ) {
+    console.log(
+      "REDIRECTING TO LOGIN"
+    );
+
     return NextResponse.redirect(
       new URL(
         "/admin/login",
@@ -27,6 +45,10 @@ export async function middleware(
       )
     );
   }
+
+  console.log(
+    "ALLOWING REQUEST"
+  );
 
   return NextResponse.next();
 }
