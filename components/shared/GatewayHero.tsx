@@ -161,80 +161,80 @@ export default function GatewayHero() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Accounting Route */}
-            <Link
-              href="/accounting"
-              className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/50"
-            >
-              <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+           {/* Wealth Route */}
+          <Link
+            href="/wealth"
+            className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/50"
+          >
+            <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
 
-              <div className="inline-flex rounded-2xl border p-4 mb-8 bg-background">
-                <Building2 className="h-10 w-10 text-primary" />
-              </div>
+            <div className="inline-flex rounded-2xl border p-4 mb-8 bg-background">
+              <TrendingUp className="h-10 w-10 text-primary" />
+            </div>
 
-              <h2 className="text-3xl font-bold mb-4">
-                Accounting & Compliance
-              </h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Wealth Creation
+            </h2>
 
-              <p className="text-muted-foreground mb-8">
-                Accounting, GST Compliance, Payroll Processing,
-                Taxation, Financial Reporting and outsourced
-                finance operations for growing businesses.
-              </p>
+            <p className="text-muted-foreground mb-8">
+              Personalized investment planning, mutual funds,
+              insurance solutions and retirement strategies
+              built around your long-term goals.
+            </p>
 
-              <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Accounting & Bookkeeping</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> GST Filing & Compliance</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Payroll Management</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> MIS & Financial Reporting</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Business Compliance Support</div>
-              </div>
+            <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Mutual Fund Advisory</div>
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> SIP Planning</div>
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Insurance Solutions</div>
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Retirement Planning</div>
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Goal-Based Wealth Creation</div>
+            </div>
 
-              <div className="flex items-center font-bold text-primary gap-2 mt-auto">
-                Explore Accounting Services
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
-              </div>
-            </Link>
+            <div className="flex items-center font-bold text-primary gap-2 mt-auto">
+              Explore Wealth Management
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
+            </div>
+          </Link>
 
-            {/* Wealth Route */}
-            <Link
-              href="/wealth"
-              className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/50"
-            >
-              <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+          {/* Accounting Route */}
+          <Link
+            href="/accounting"
+            className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/50"
+          >
+            <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
 
-              <div className="inline-flex rounded-2xl border p-4 mb-8 bg-background">
-                <TrendingUp className="h-10 w-10 text-primary" />
-              </div>
+            <div className="inline-flex rounded-2xl border p-4 mb-8 bg-background">
+              <Building2 className="h-10 w-10 text-primary" />
+            </div>
 
-              <h2 className="text-3xl font-bold mb-4">
-                Wealth Creation
-              </h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Accounting & Compliance
+            </h2>
 
-              <p className="text-muted-foreground mb-8">
-                Personalized investment planning, mutual funds,
-                insurance solutions and retirement strategies
-                built around your long-term goals.
-              </p>
+            <p className="text-muted-foreground mb-8">
+              Accounting, GST Compliance, Payroll Processing,
+              Taxation, Financial Reporting and outsourced
+              finance operations for growing businesses.
+            </p>
 
-              <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Mutual Fund Advisory</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> SIP Planning</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Insurance Solutions</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Retirement Planning</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Goal-Based Wealth Creation</div>
-              </div>
+            <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Accounting & Bookkeeping</div>
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> GST Filing & Compliance</div>
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Payroll Management</div>
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> MIS & Financial Reporting</div>
+              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Business Compliance Support</div>
+            </div>
 
-              <div className="flex items-center font-bold text-primary gap-2 mt-auto">
-                Explore Wealth Management
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
-              </div>
-            </Link>
-          </div>
+            <div className="flex items-center font-bold text-primary gap-2 mt-auto">
+              Explore Accounting Services
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
+            </div>
+          </Link>
         </div>
-      </main>
+      </div>
+    </main>
 
-      <Footer />
-    </>
-  );
+    <Footer />
+  </>
+);
 }
