@@ -26,7 +26,7 @@ const slides = [
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2036&auto=format&fit=crop", 
-    heading: "Managing You Accounts",
+    heading: "Managing Your Accounts",
     subheading: "Accounting Services",
     description: "Scalable accounting, taxation, compliance, and outsourced bookkeeping services for MSMEs, Proprietorships, Partnership firms and Professional Consultants helping businesses stay compliant, efficient and growth-focused."
   }

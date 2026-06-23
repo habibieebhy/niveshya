@@ -8,7 +8,6 @@ export default function Navbar() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
         {/* Logo */}
-
         <a
           href="#home"
           className="flex items-center gap-3"
@@ -27,7 +26,7 @@ export default function Navbar() {
             </div>
 
             <div className="text-xs text-muted-foreground">
-              Accounting • Taxation • Compliance
+              Managing Today. Growing Tomorrow.
             </div>
           </div>
         </a>

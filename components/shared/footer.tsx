@@ -27,22 +27,22 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li>
                 <Link href="/accounting" className="hover:text-primary transition-colors">
-                  Accounting & Compliance
-                </Link>
-              </li>
-              <li>
-                <Link href="/wealth" className="hover:text-primary transition-colors">
                   Wealth Creation
                 </Link>
               </li>
               <li>
+                <Link href="/wealth" className="hover:text-primary transition-colors">
+                  Insurance Solution
+                </Link>
+              </li>
+              <li>
                 <Link href="/accounting#taxation" className="hover:text-primary transition-colors">
-                  Taxation Services
+                  Mutual Fund Advisory
                 </Link>
               </li>
               <li>
                 <Link href="/wealth#mutual-funds" className="hover:text-primary transition-colors">
-                  Mutual Fund Advisory
+                  Accounting, Taxation & Compliance
                 </Link>
               </li>
             </ul>
@@ -85,11 +85,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>+91 XXXXX XXXXX</span>
+                <span>+91 9022391182</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>contact@niveshya.co.in</span>
+                <span>joydeepghosh29@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -103,14 +103,14 @@ export default function Footer() {
             <img 
               src="/logo.png" 
               alt="Niveshya Logo" 
-              className="h-6 w-auto object-contain grayscale opacity-60"
+              className="h-50 w-auto object-contain grayscale opacity-60"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
-            <p>© {new Date().getFullYear()} COPYRIGHT NIVESHYA x Brixta. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} NIVESHYA x Brixta. All rights reserved.</p>
           </div>
           
           {/* Powered By Section */}
-          <div className="flex items-center gap-3 group cursor-pointer">
+          {/* <div className="flex items-center gap-3 group cursor-pointer">
             <span className="font-medium tracking-wide uppercase text-[10px] text-muted-foreground/70 group-hover:text-muted-foreground transition-colors">
               Powered by
             </span>
@@ -129,7 +129,7 @@ export default function Footer() {
               />
               <span className="hidden font-bold text-xs tracking-widest">BRIXTA</span>
             </div>
-          </div>
+          </div> */}
           
         </div>
       </div>

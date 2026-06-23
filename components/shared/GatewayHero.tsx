@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { 
-  Building2, 
-  TrendingUp, 
+import {
+  Building2,
+  TrendingUp,
   ArrowRight,
   Building, // For Chandra Enterprises
   Leaf,     // For The Bamboo Expert
@@ -13,7 +13,7 @@ import {
   Rocket    // For Propello Innovations
 } from "lucide-react";
 import GrandHeroSlider from "./GrandHeroSlider";
-import Footer from "./footer"; 
+import Footer from "./footer";
 
 const trustedCompanies = [
   { name: "Chandra Enterprises", icon: Building },
@@ -51,59 +51,59 @@ export default function GatewayHero() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 pt-12">
-          
+
           {/* --- PART 1: THE GRAND HERO SLIDER --- */}
           <GrandHeroSlider />
 
           {/* --- PART 1.5: LOGO COMPASS & STATS --- */}
           <div className="text-center max-w-3xl mx-auto mt-20 mb-8">
-              <p className="text-lg md:text-xl text-muted-foreground">
-                Whether you're running a business or planning your financial future,
-                Niveshya Advisory helps you make informed decisions with confidence.
-              </p>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              Whether you're running a business or planning your financial future,
+              Niveshya Advisory helps you make informed decisions with confidence.
+            </p>
           </div>
 
-          {/* N-S-E-W Logo Layout */}
-          <div className="relative max-w-2xl mx-auto h-[350px] flex items-center justify-center my-12">
-            
+         {/* N-S-E-W Logo Layout */}
+          <div className="relative max-w-2xl mx-auto h-[350px] md:h-[400px] flex items-center justify-center my-12">
+
             {/* Center Logo */}
-            <div className="z-10 h-32 w-32 rounded-full bg-card border shadow-2xl flex items-center justify-center p-4">
+            <div className="z-10 h-28 w-28 md:h-45 md:w-45 rounded-full bg-card border shadow-2xl flex items-center justify-center p-3 md:p-4 transition-all duration-300">
               {!imgFailed ? (
-                <img 
-                  src="/logo.png" 
-                  alt="Niveshya Advisory Logo" 
+                <img
+                  src="/logo.png"
+                  alt="Niveshya Advisory Logo"
                   className="w-full h-full object-contain"
                   onError={() => setImgFailed(true)}
                 />
               ) : (
-                <span className="font-bold text-xl">LOGO</span>
+                <span className="font-bold text-lg md:text-2xl">LOGO</span>
               )}
             </div>
 
             {/* North */}
             <div className="absolute top-4 left-1/2 -translate-x-1/2 text-center">
-              <p className="text-2xl font-bold text-primary">15+</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider font-medium">SME Clients</p>
+              <p className="text-xl md:text-2xl font-bold text-primary">15+</p>
+              <p className="text-[10px] md:text-sm text-muted-foreground uppercase tracking-wider font-medium mt-1">SME Clients</p>
             </div>
 
             {/* South */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center">
-              <p className="text-2xl font-bold text-primary">10+ Cr</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider font-medium">AUM</p>
+              <p className="text-xl md:text-2xl font-bold text-primary">10+ Cr</p>
+              <p className="text-[10px] md:text-sm text-muted-foreground uppercase tracking-wider font-medium mt-1">AUM</p>
             </div>
 
             {/* West */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 text-center">
-              <p className="text-2xl font-bold text-primary">100+</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider font-medium whitespace-nowrap">Claim Settlements</p>
+            <div className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 text-center w-24 md:w-auto">
+              <p className="text-xl md:text-2xl font-bold text-primary">100+</p>
+              <p className="text-[10px] md:text-sm text-muted-foreground uppercase tracking-wider font-medium md:whitespace-nowrap leading-tight mt-1">Claim Settlements</p>
             </div>
 
             {/* East */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 text-center">
-              <p className="text-2xl font-bold text-primary">150+</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider font-medium whitespace-nowrap">Retail Investors</p>
+            <div className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 text-center w-24 md:w-auto">
+              <p className="text-xl md:text-2xl font-bold text-primary">150+</p>
+              <p className="text-[10px] md:text-sm text-muted-foreground uppercase tracking-wider font-medium md:whitespace-nowrap leading-tight mt-1">Retail Investors</p>
             </div>
-            
+
             {/* Connecting faint dashed lines */}
             <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-10">
               <div className="absolute w-full h-[1px] border-t border-dashed border-primary"></div>
@@ -117,15 +117,15 @@ export default function GatewayHero() {
           <div className="text-center mb-8">
             <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Trusted by Great Companies</p>
           </div>
-          
+
           {/* Gradient overlays for smooth entry/exit edges */}
           <div className="absolute left-0 bottom-0 w-32 h-24 bg-gradient-to-r from-background to-transparent z-10" />
           <div className="absolute right-0 bottom-0 w-32 h-24 bg-gradient-to-l from-background to-transparent z-10" />
-          
+
           {/* Infinite scrolling track */}
           <div className="whitespace-nowrap flex overflow-hidden">
             <div className="animate-marquee items-center flex gap-16 pr-16">
-              
+
               {/* Set 1 */}
               {trustedCompanies.map((company, idx) => {
                 const Icon = company.icon;
@@ -147,7 +147,7 @@ export default function GatewayHero() {
                   </div>
                 );
               })}
-              
+
             </div>
           </div>
         </div>
@@ -161,80 +161,80 @@ export default function GatewayHero() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-           {/* Wealth Route */}
-          <Link
-            href="/wealth"
-            className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/50"
-          >
-            <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+            {/* Wealth Route */}
+            <Link
+              href="/wealth"
+              className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/50"
+            >
+              <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
 
-            <div className="inline-flex rounded-2xl border p-4 mb-8 bg-background">
-              <TrendingUp className="h-10 w-10 text-primary" />
-            </div>
+              <div className="inline-flex rounded-2xl border p-4 mb-8 bg-background">
+                <TrendingUp className="h-10 w-10 text-primary" />
+              </div>
 
-            <h2 className="text-3xl font-bold mb-4">
-              Wealth Creation
-            </h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Wealth Creation
+              </h2>
 
-            <p className="text-muted-foreground mb-8">
-              Personalized investment planning, mutual funds,
-              insurance solutions and retirement strategies
-              built around your long-term goals.
-            </p>
+              <p className="text-muted-foreground mb-8">
+                Personalized investment planning, mutual funds,
+                insurance solutions and retirement strategies
+                built around your long-term goals.
+              </p>
 
-            <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Mutual Fund Advisory</div>
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> SIP Planning</div>
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Insurance Solutions</div>
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Retirement Planning</div>
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Goal-Based Wealth Creation</div>
-            </div>
+              <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Mutual Fund Advisory</div>
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> SIP Planning</div>
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Insurance Solutions</div>
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Retirement Planning</div>
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Goal-Based Wealth Creation</div>
+              </div>
 
-            <div className="flex items-center font-bold text-primary gap-2 mt-auto">
-              Explore Wealth Management
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
-            </div>
-          </Link>
+              <div className="flex items-center font-bold text-primary gap-2 mt-auto">
+                Explore Wealth Management
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
+              </div>
+            </Link>
 
-          {/* Accounting Route */}
-          <Link
-            href="/accounting"
-            className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/50"
-          >
-            <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+            {/* Accounting Route */}
+            <Link
+              href="/accounting"
+              className="group relative overflow-hidden rounded-3xl border bg-card p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/50"
+            >
+              <div className="absolute top-0 left-0 h-1 w-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
 
-            <div className="inline-flex rounded-2xl border p-4 mb-8 bg-background">
-              <Building2 className="h-10 w-10 text-primary" />
-            </div>
+              <div className="inline-flex rounded-2xl border p-4 mb-8 bg-background">
+                <Building2 className="h-10 w-10 text-primary" />
+              </div>
 
-            <h2 className="text-3xl font-bold mb-4">
-              Accounting & Compliance
-            </h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Accounting & Compliance
+              </h2>
 
-            <p className="text-muted-foreground mb-8">
-              Accounting, GST Compliance, Payroll Processing,
-              Taxation, Financial Reporting and outsourced
-              finance operations for growing businesses.
-            </p>
+              <p className="text-muted-foreground mb-8">
+                Accounting, GST Compliance, Payroll Processing,
+                Taxation, Financial Reporting and outsourced
+                finance operations for growing businesses.
+              </p>
 
-            <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Accounting & Bookkeeping</div>
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> GST Filing & Compliance</div>
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Payroll Management</div>
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> MIS & Financial Reporting</div>
-              <div className="flex items-center gap-2"><span className="text-primary">✓</span> Business Compliance Support</div>
-            </div>
+              <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Accounting & Bookkeeping</div>
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> GST Filing & Compliance</div>
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Payroll Management</div>
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> MIS & Financial Reporting</div>
+                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Business Compliance Support</div>
+              </div>
 
-            <div className="flex items-center font-bold text-primary gap-2 mt-auto">
-              Explore Accounting Services
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
-            </div>
-          </Link>
+              <div className="flex items-center font-bold text-primary gap-2 mt-auto">
+                Explore Accounting Services
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
+              </div>
+            </Link>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
 
-    <Footer />
-  </>
-);
+      <Footer />
+    </>
+  );
 }
