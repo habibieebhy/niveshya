@@ -6,8 +6,9 @@ import InvestmentPlans from "@/components/wealth/InvestmentPlans";
 import InsuranceServices from "@/components/wealth/InsuranceServices";
 import GoalPlanning from "@/components/wealth/GoalPlanning";
 import AdvisoryTrust from "@/components/wealth/AdvisoryTrust";
-import TrustStrip from "@/components/wealth/TrustStrip";
 import WhoWeHelp from "@/components/wealth/WhoWeHelp";
+
+import FloatingCTA from "@/components/shared/FloatingCTA";
 
 export default function WealthPage() {
   return (
@@ -17,21 +18,21 @@ export default function WealthPage() {
 
       <WealthHero />
 
-      <TrustStrip />
-
       <WhoWeHelp />
 
       <InvestmentPlans />
 
-      <InsuranceServices />
-
       <GoalPlanning />
+      
+      <InsuranceServices />
 
       <AdvisoryTrust />
 
       <Contact />
 
       <Footer />
+      <FloatingCTA/>
+      
     </main>
   );
 }

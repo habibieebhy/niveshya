@@ -20,7 +20,7 @@ export default function InvestmentPlans() {
   ];
 
   return (
-    <section id="services" className="py-24 px-6">
+    <section id="services" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 text-center max-w-3xl mx-auto">
           <p className="text-sm font-semibold tracking-widest text-emerald-600 mb-4 uppercase">

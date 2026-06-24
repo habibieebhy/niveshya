@@ -25,7 +25,7 @@ export default function InsuranceServices() {
   ];
 
   return (
-    <section id="insurance-services" className="py-24 px-6 bg-muted/20 border-y scroll-mt-24">
+    <section id="insurance-services" className="py-20 px-6 bg-muted/20 border-y scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
           <p className="text-sm font-semibold tracking-widest text-emerald-600 mb-4 uppercase">

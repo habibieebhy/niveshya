@@ -2,7 +2,7 @@ import { ShieldCheck, TrendingUp, Target } from "lucide-react";
 
 export default function WealthHero() {
   return (
-    <section id="home" className="relative py-24 lg:py-32 px-6 overflow-hidden">
+    <section id="home" className="relative py-20 lg:py-32 px-6 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute left-1/2 top-0 h-125 w-125 -translate-x-1/2 rounded-full bg-emerald-500/5 blur-3xl" />

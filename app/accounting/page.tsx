@@ -4,9 +4,10 @@ import Stats from "@/components/stats/Stats";
 import Features from "@/components/features/features";
 import Industries from "@/components/industries/industries";
 import About from "@/components/about/About";
-import Trust from "@/components/trust/trust";
 import Contact from "@/components/contact/Contact";
 import Footer from "@/components/footer/Footer";
+
+import FloatingCTA from "@/components/shared/FloatingCTA";
 
 export default function BusinessPage() {
   return (
@@ -24,11 +25,10 @@ export default function BusinessPage() {
 
       <About />
 
-      <Trust />
-
       <Contact />
 
       <Footer />
+      <FloatingCTA/>
 
     </main>
   );

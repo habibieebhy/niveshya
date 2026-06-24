@@ -208,7 +208,7 @@ export default function GatewayHero() {
               </div>
 
               <h2 className="text-3xl font-bold mb-4">
-                Accounting & Compliance
+                Accounting Services
               </h2>
 
               <p className="text-muted-foreground mb-8">

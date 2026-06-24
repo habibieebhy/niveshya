@@ -25,7 +25,7 @@ export default function WhoWeHelp() {
   ];
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-18 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <p className="text-sm font-semibold tracking-widest text-emerald-600 mb-4 uppercase">
