@@ -23,25 +23,37 @@ export default function Contact() {
     const message = formData.get("message") as string;
 
     // 2. Client-side length validation to prevent the Zod server error
-    if (phone.length < 10) {
-      alert("Please enter a valid phone number with at least 10 digits.");
+    if (phone.length < 10 || phone.length > 10) {
+      alert("Please enter a valid phone number with 10 digits.");
       return;
     }
+
+    // THE MAGIC TRICK: Open a blank tab IMMEDIATELY so Brave/Safari doesn't block it.
+    const whatsappTab = window.open("about:blank", "_blank");
 
     try {
       // 3. Trigger the server action
       await createLead(formData);
 
-      // 4. Format the WhatsApp message and open it
+      // 4. Format the WhatsApp message
       const whatsappNumber = "919022391182";
       const text = `*New Consultation Request*%0A%0A*Name:* ${businessName}%0A*%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Service Required:* ${service}%0A*Message:* ${message}`;
       
-      window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
+      // Redirect the tab we already opened to WhatsApp
+      if (whatsappTab) {
+        whatsappTab.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+      }
       
       // 5. Reset the form using our securely saved reference!
       form.reset(); 
     } catch (error) {
       console.error("Failed to submit lead:", error);
+      
+      // If the database fails, close the blank tab so the user isn't confused
+      if (whatsappTab) {
+        whatsappTab.close();
+      }
+      
       alert("Something went wrong. Please try again.");
     }
   };
@@ -90,13 +102,10 @@ export default function Contact() {
                     Required Service
                   </option>
                   <option value="Insurance Advice" className="bg-background text-foreground">
-                    Insurance Advice
-                  </option>
-                  <option value="Investment Querries" className="bg-background text-foreground">
-                    Investment Querries
+                    Insurance & Investment Advice
                   </option>
                   <option value="GST and Taxation Advice" className="bg-background text-foreground">
-                    GST and Taxation Advice
+                    Accounting and Taxation Advice
                   </option>
                   <option value="Other" className="bg-background text-foreground">
                     Other (Mention in message...)
