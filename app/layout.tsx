@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Professional Accounting, Taxation, GST Compliance, Payroll and Bookkeeping Services in Guwahati, Assam.",
+    "Professional Accounting, Taxation, GST Compliance and Bookkeeping Services in Guwahati, Assam.",
 
   icons: {
     icon: "/logo.png",

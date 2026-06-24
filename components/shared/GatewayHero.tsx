@@ -46,8 +46,8 @@ export default function GatewayHero() {
 
         {/* Background Effects */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute top-0 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
-          <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute top-0 left-1/2 h-125 w-125 -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute bottom-0 right-0 h-100 w-100 rounded-full bg-primary/5 blur-3xl" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 pt-12">
@@ -64,7 +64,7 @@ export default function GatewayHero() {
           </div>
 
          {/* N-S-E-W Logo Layout */}
-          <div className="relative max-w-2xl mx-auto h-[350px] md:h-[400px] flex items-center justify-center my-12">
+          <div className="relative max-w-2xl mx-auto h-87.5 md:h-100 flex items-center justify-center my-12">
 
             {/* Center Logo */}
             <div className="z-10 h-28 w-28 md:h-45 md:w-45 rounded-full bg-card border shadow-2xl flex items-center justify-center p-3 md:p-4 transition-all duration-300">
@@ -106,8 +106,8 @@ export default function GatewayHero() {
 
             {/* Connecting faint dashed lines */}
             <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-10">
-              <div className="absolute w-full h-[1px] border-t border-dashed border-primary"></div>
-              <div className="absolute h-full w-[1px] border-l border-dashed border-primary"></div>
+              <div className="absolute w-full h-px border-t border-dashed border-primary"></div>
+              <div className="absolute h-full w-px border-l border-dashed border-primary"></div>
             </div>
           </div>
         </div>
@@ -115,12 +115,12 @@ export default function GatewayHero() {
         {/* --- PART 2: COMPANIES WORKED WITH SLIDER --- */}
         <div className="w-full py-16 mt-12 bg-card/30 border-y border-border overflow-hidden relative">
           <div className="text-center mb-8">
-            <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Trusted by Great Companies</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Trusted by</p>
           </div>
 
           {/* Gradient overlays for smooth entry/exit edges */}
-          <div className="absolute left-0 bottom-0 w-32 h-24 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute right-0 bottom-0 w-32 h-24 bg-gradient-to-l from-background to-transparent z-10" />
+          <div className="absolute left-0 bottom-0 w-32 h-24 bg-linear-to-r from-background to-transparent z-10" />
+          <div className="absolute right-0 bottom-0 w-32 h-24 bg-linear-to-l from-background to-transparent z-10" />
 
           {/* Infinite scrolling track */}
           <div className="whitespace-nowrap flex overflow-hidden">
@@ -173,7 +173,7 @@ export default function GatewayHero() {
               </div>
 
               <h2 className="text-3xl font-bold mb-4">
-                Wealth Creation
+                Wealth Advisory
               </h2>
 
               <p className="text-muted-foreground mb-8">
@@ -212,7 +212,7 @@ export default function GatewayHero() {
               </h2>
 
               <p className="text-muted-foreground mb-8">
-                Accounting, GST Compliance, Payroll Processing,
+                Accounting, GST Compliance,
                 Taxation, Financial Reporting and outsourced
                 finance operations for growing businesses.
               </p>
@@ -220,7 +220,6 @@ export default function GatewayHero() {
               <div className="space-y-3 mb-10 text-sm text-muted-foreground font-medium">
                 <div className="flex items-center gap-2"><span className="text-primary">✓</span> Accounting & Bookkeeping</div>
                 <div className="flex items-center gap-2"><span className="text-primary">✓</span> GST Filing & Compliance</div>
-                <div className="flex items-center gap-2"><span className="text-primary">✓</span> Payroll Management</div>
                 <div className="flex items-center gap-2"><span className="text-primary">✓</span> MIS & Financial Reporting</div>
                 <div className="flex items-center gap-2"><span className="text-primary">✓</span> Business Compliance Support</div>
               </div>

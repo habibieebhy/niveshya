@@ -13,9 +13,17 @@ export default function Footer() {
           </p>
         </div>
 
-        <p className="text-sm text-muted-foreground">
-          © 2026 Niveshya
-        </p>
+        <div className="flex items-center gap-6">
+          <p className="text-sm text-muted-foreground hidden sm:block">
+            © 2026 Niveshya
+          </p>
+          
+          <img 
+            src="/footer.png" 
+            alt="Footer Logo" 
+            className="h-14 w-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
+          />
+        </div>
 
       </div>
     </footer>

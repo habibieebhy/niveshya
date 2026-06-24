@@ -12,7 +12,7 @@ const ACCOUNTING_SERVICES_MAP: Record<string, string> = {
   "7": "Billing & Ledger Management",
   "8": "E-Way Bill & E-Invoice Generation",
   "9": "Inventory & Stock Accounting",
-  "10": "Payroll Support & Salary Processing",
+  "10": "Tally Prime and Advanced Excel",
 };
 
 const WEALTH_GOALS_MAP: Record<string, string> = {
@@ -82,7 +82,7 @@ export async function processIncomingMessage(
       })
       .where(eq(whatsappSessions.phone, phone));
 
-    return `📊 Business Services\n\nPlease select the services you're interested in:\n\n1️⃣ Accounting & Bookkeeping\n2️⃣ GST Compliance & Return Filing\n3️⃣ TDS & Professional Tax Compliance\n4️⃣ Bank, Debtor & Creditor Reconciliation\n5️⃣ MIS & Financial Reporting\n6️⃣ Accounts Payable & Vendor Management\n7️⃣ Billing & Ledger Management\n8️⃣ E-Way Bill & E-Invoice Generation\n9️⃣ Inventory & Stock Accounting\n🔟 Payroll Support & Salary Processing\n\nYou may select multiple services.\n\nExample:\n1,2,10`;
+    return `📊 Business Services\n\nPlease select the services you're interested in:\n\n1️⃣ Accounting & Bookkeeping\n2️⃣ GST Compliance & Return Filing\n3️⃣ TDS & Professional Tax Compliance\n4️⃣ Bank, Debtor & Creditor Reconciliation\n5️⃣ MIS & Financial Reporting\n6️⃣ Accounts Payable & Vendor Management\n7️⃣ Billing & Ledger Management\n8️⃣ E-Way Bill & E-Invoice Generation\n9️⃣ Inventory & Stock Accounting\n\nYou may select multiple services.\n\nExample:\n1,2,10`;
   }
 
   if (isWealth) {

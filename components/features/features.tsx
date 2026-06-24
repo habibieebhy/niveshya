@@ -28,12 +28,6 @@ const services = [
       "TDS, Professional Tax, compliance documentation and support for statutory filing requirements.",
   },
   {
-    icon: Users,
-    title: "Payroll Support",
-    description:
-      "Salary processing, payroll records, employee-related accounting and monthly payroll support services.",
-  },
-  {
     icon: BarChart3,
     title: "MIS & Financial Reporting",
     description:

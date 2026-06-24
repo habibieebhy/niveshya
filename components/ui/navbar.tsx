@@ -9,7 +9,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <a
-          href="#home"
+          href="/"
           className="flex items-center gap-3"
         >
           <Image

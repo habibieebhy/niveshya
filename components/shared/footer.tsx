@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-border/50 bg-background pt-16 pb-8 relative overflow-hidden">
       {/* Subtle background glow to match the hero */}
-      <div className="absolute bottom-0 left-1/2 h-[300px] w-[500px] -translate-x-1/2 rounded-full bg-primary/5 blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-1/2 h-75 w-125 -translate-x-1/2 rounded-full bg-primary/5 blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Main Footer Content */}
@@ -26,22 +26,17 @@ export default function Footer() {
             <h4 className="font-semibold mb-6 text-foreground">Services</h4>
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li>
-                <Link href="/accounting" className="hover:text-primary transition-colors">
-                  Wealth Creation
-                </Link>
-              </li>
-              <li>
                 <Link href="/wealth" className="hover:text-primary transition-colors">
-                  Insurance Solution
+                  Wealth Advisory
                 </Link>
               </li>
               <li>
-                <Link href="/accounting#taxation" className="hover:text-primary transition-colors">
-                  Mutual Fund Advisory
+                <Link href="/wealth#insurance-services" className="hover:text-primary transition-colors">
+                  Insurance Services
                 </Link>
               </li>
               <li>
-                <Link href="/wealth#mutual-funds" className="hover:text-primary transition-colors">
+                <Link href="/accounting" className="hover:text-primary transition-colors">
                   Accounting, Taxation & Compliance
                 </Link>
               </li>
@@ -53,22 +48,17 @@ export default function Footer() {
             <h4 className="font-semibold mb-6 text-foreground">Company</h4>
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li>
-                <Link href="/about" className="hover:text-primary transition-colors">
+                <Link href="/landing/aboutPage" className="hover:text-primary transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="hover:text-primary transition-colors">
+                <Link href="/landing/privacyPage" className="hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-primary transition-colors">
+                <Link href="/landing/termsPage" className="hover:text-primary transition-colors">
                   Terms of Service
                 </Link>
               </li>
@@ -108,28 +98,6 @@ export default function Footer() {
             />
             <p>© {new Date().getFullYear()} NIVESHYA x Brixta. All rights reserved.</p>
           </div>
-          
-          {/* Powered By Section */}
-          {/* <div className="flex items-center gap-3 group cursor-pointer">
-            <span className="font-medium tracking-wide uppercase text-[10px] text-muted-foreground/70 group-hover:text-muted-foreground transition-colors">
-              Powered by
-            </span>
-            <div className="h-6 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-              <img 
-                src="/footer.png" 
-                alt="Powered by Logo" 
-                className="h-full w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  const fallbackText = e.currentTarget.nextElementSibling as HTMLElement | null;
-                  if (fallbackText) {
-                    fallbackText.style.display = 'block';
-                  }
-                }}
-              />
-              <span className="hidden font-bold text-xs tracking-widest">BRIXTA</span>
-            </div>
-          </div> */}
           
         </div>
       </div>

@@ -7,9 +7,9 @@ import { createLeadSchema } from "@/db/zod";
 export async function createLead(
   formData: FormData
 ): Promise<void> {
-  console.log(
-    "🚀 SERVER ACTION HIT"
-  );
+  // console.log(
+  //   "🚀 SERVER ACTION HIT"
+  // );
 
   try {
     const validated =

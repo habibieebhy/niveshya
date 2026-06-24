@@ -46,7 +46,7 @@ export default function GrandHeroSlider() {
   const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
 
   return (
-    <div className="relative w-full h-[600px] md:h-[700px] rounded-3xl overflow-hidden shadow-2xl mb-16 group">
+    <div className="relative w-full h-160 md:h-175 rounded-3xl overflow-hidden shadow-2xl mb-16 group">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -55,14 +55,14 @@ export default function GrandHeroSlider() {
           }`}
         >
           <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] ease-linear scale-105"
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-10000 ease-linear scale-105"
             style={{ 
               backgroundImage: `url(${slide.image})`,
               transform: index === currentSlide ? 'scale(1)' : 'scale(1.1)'
             }} 
           />
           
-          <div className="absolute inset-0 bg-black/70 bg-gradient-to-t from-background/90 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-black/70 bg-linear-to-t from-background/90 via-black/50 to-transparent" />
 
           {/* Increased max-w to 7xl to give the text and logo room to breathe on desktop */}
           <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-20 max-w-7xl mx-auto text-white">
@@ -112,7 +112,7 @@ export default function GrandHeroSlider() {
                     src="/logo.png" 
                     alt="Niveshya Advisory Large Logo" 
                     // Using w-full with a generous max-width so it looks massive but stays proportionate
-                    className="w-full max-w-[450px] lg:max-w-[550px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+                    className="w-full max-w-112.5 lg:max-w-137.5 h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
                   />
                 </div>
               )}
