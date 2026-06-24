@@ -4,7 +4,6 @@ import { createLead } from "@/actions/create-lead";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin } from "lucide-react";
 import { FormEvent } from "react";
 
 export default function Contact() {
@@ -28,33 +27,34 @@ export default function Contact() {
       return;
     }
 
-    // THE MAGIC TRICK: Open a blank tab IMMEDIATELY so Brave/Safari doesn't block it.
+    // 3. Format and properly encode the WhatsApp text to handle special characters
+    const rawText = `*New Consultation Request*\n\n*Name:* ${businessName}\n*Phone:* ${phone}\n*Email:* ${email}\n*Service Required:* ${service}\n*Message:* ${message}`;
+    const text = encodeURIComponent(rawText);
+    const whatsappURL = `https://wa.me/919022391182?text=${text}`;
+
+    // 4. Open a blank tab IMMEDIATELY so Brave/Safari popup blockers ignore it
     const whatsappTab = window.open("about:blank", "_blank");
 
     try {
-      // 3. Trigger the server action
+      // 5. Trigger the server action
       await createLead(formData);
 
-      // 4. Format the WhatsApp message
-      const whatsappNumber = "919022391182";
-      const text = `*New Consultation Request*%0A%0A*Name:* ${businessName}%0A*%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Service Required:* ${service}%0A*Message:* ${message}`;
-      
-      // Redirect the tab we already opened to WhatsApp
+      // Success: Redirect the opened tab to WhatsApp
       if (whatsappTab) {
-        whatsappTab.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+        whatsappTab.location.href = whatsappURL;
       }
       
-      // 5. Reset the form using our securely saved reference!
       form.reset(); 
     } catch (error) {
-      console.error("Failed to submit lead:", error);
+      console.error("Failed to save lead to database:", error);
       
-      // If the database fails, close the blank tab so the user isn't confused
+      // FAILSAFE FALLBACK: If the database/server crashes, DO NOT lose the lead.
+      // Redirect them to WhatsApp anyway instead of throwing an alert.
       if (whatsappTab) {
-        whatsappTab.close();
+        whatsappTab.location.href = whatsappURL;
       }
       
-      alert("Something went wrong. Please try again.");
+      form.reset(); 
     }
   };
 
