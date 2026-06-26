@@ -63,7 +63,7 @@ export default function FloatingCTA() {
 
           {/* "Ask NOW!!" Looping Text Popup */}
           <span className="animate-tooltip absolute right-full mr-4 flex w-max origin-right items-center justify-center whitespace-nowrap rounded-xl bg-foreground px-4 py-2 text-sm font-bold text-background shadow-2xl">
-            Ask Away!!
+            Lets Connect!
             {/* Little Triangle Pointing to the Button */}
             <span className="absolute -right-1.5 top-1/2 -translate-y-1/2 border-y-[6px] border-l-[6px] border-y-transparent border-l-foreground"></span>
           </span>
