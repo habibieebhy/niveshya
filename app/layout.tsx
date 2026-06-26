@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Professional Accounting, Taxation, GST Compliance and Bookkeeping Services in Guwahati, Assam.",
+    "Integrated Wealth Advisory and Accounting Services designed to help you manage today and grow tomorrow.",
 
   icons: {
     icon: "/logo.png",

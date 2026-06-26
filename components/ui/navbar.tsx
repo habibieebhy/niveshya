@@ -69,14 +69,14 @@ export default function Navbar() {
           </div>
 
           <a
-            href="/about"
+            href="#about"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             About
           </a>
 
           <a
-            href="/contact"
+            href="#contact"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Contact
