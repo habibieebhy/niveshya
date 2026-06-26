@@ -19,7 +19,7 @@ export default function InsuranceServices() {
     },
     {
       icon: CarIcon,
-      title: "Motor insurance",
+      title: "Motor Insurance",
       description: "Secure your vehicle's life from unwanted occurences.",
     }
   ];
