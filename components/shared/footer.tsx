@@ -78,6 +78,14 @@ export default function Footer() {
                 <span>+91 9022391182</span>
               </li>
               <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-primary" />
+                <span>+91 8638834593</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-primary" />
+                <span>+91 9864407395</span>
+              </li>
+              <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
                 <span>joydeepghosh29@gmail.com</span>
               </li>
