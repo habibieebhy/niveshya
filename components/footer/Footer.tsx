@@ -10,11 +10,12 @@ export default function Footer() {
 
   return (
     <footer className="border-t py-10 relative z-10 bg-background">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 relative">
+      {/* Changed to flex-col on mobile, flex-row on sm+ screens, with a gap for mobile stacking */}
+      <div className="mx-auto flex flex-col sm:flex-row max-w-7xl items-center justify-between gap-6 sm:gap-0 px-6 relative">
 
         {/* LEFT: Brand */}
         <div>
-          <h3 className="font-semibold">
+          <h3 className="font-semibold text-xl sm:text-base">
             Niveshya
           </h3>
         </div>
@@ -27,7 +28,8 @@ export default function Footer() {
         </div>
 
         {/* RIGHT: Powered By & Logos */}
-        <div className="flex items-center gap-4 z-10">
+        {/* Added flex-wrap and justify-center for a clean mobile wrap */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 z-10">
           {isWealthPage && (
             <>
               <span className="text-xs font-semibold text-muted-foreground whitespace-nowrap">
@@ -37,13 +39,14 @@ export default function Footer() {
               <img 
                 src="/policyBazar.jpeg" 
                 alt="Policy Bazaar Logo" 
-                className="h-14 w-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
+                // Scaled down to h-10 on mobile to prevent overflow, h-14 on desktop
+                className="h-10 sm:h-14 w-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
               />
               
               <img 
                 src="/NJWealth.jpeg" 
                 alt="NJ Wealth Logo" 
-                className="h-14 w-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
+                className="h-10 sm:h-14 w-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
               />
             </>
           )}
