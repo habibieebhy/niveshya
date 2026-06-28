@@ -70,7 +70,7 @@ export default function GatewayHero() {
             <div className="z-10 h-28 w-28 md:h-45 md:w-45 rounded-full bg-card border shadow-2xl flex items-center justify-center p-3 md:p-4 transition-all duration-300">
               {!imgFailed ? (
                 <img
-                  src="/logo.png"
+                  src="/finallogo.png"
                   alt="Niveshya Advisory Logo"
                   className="w-full h-full object-contain"
                   onError={() => setImgFailed(true)}

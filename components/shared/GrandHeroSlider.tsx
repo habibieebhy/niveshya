@@ -109,7 +109,7 @@ export default function GrandHeroSlider() {
               {slide.showLogo && (
                 <div className="hidden md:flex w-full md:w-1/2 justify-end items-center">
                   <img 
-                    src="/logo.png" 
+                    src="/finallogo.png" 
                     alt="Niveshya Advisory Large Logo" 
                     // Using w-full with a generous max-width so it looks massive but stays proportionate
                     className="w-full max-w-112.5 lg:max-w-137.5 h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"

@@ -37,7 +37,7 @@ export default function Footer() {
               </span>
               
               <img 
-                src="/policyBazar.jpeg" 
+                src="/policyBazar.png" 
                 alt="Policy Bazaar Logo" 
                 // Scaled down to h-10 on mobile to prevent overflow, h-14 on desktop
                 className="h-10 sm:h-14 w-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
