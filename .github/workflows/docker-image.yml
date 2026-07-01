@@ -27,7 +27,7 @@ jobs:
           context: .
           push: true
           tags: |
-            zahrbrixta/niveshya:v7
+            zahrbrixta/niveshya:v8
             zahrbrixta/niveshya:${{ github.run_number }}
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}

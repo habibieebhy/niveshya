@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { FormEvent } from "react";
+import Link from "next/link";
 
 export default function Contact() {
   
@@ -135,12 +136,32 @@ export default function Contact() {
                 placeholder="Email Address"
               />
 
-
               <Textarea
                 name="message"
                 className="min-h-35"
                 placeholder="Tell us about your requirements & we'll get back to you..."
               />
+
+              {/* Mandatory Consent Checkbox */}
+              <div className="flex items-start gap-3 py-2">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  required
+                  className="mt-1 h-4 w-4 shrink-0 rounded border-input bg-transparent text-emerald-600 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50"
+                />
+                <label htmlFor="consent" className="text-xs text-muted-foreground leading-relaxed">
+                  I hereby authorize to send notifications via SMS, Email, RCS and others as per{" "}
+                  <Link href="/landing/termsPage" className="underline underline-offset-2 hover:text-emerald-500 transition-colors" target="_blank">
+                    Terms of Service
+                  </Link>
+                  {" "}and{" "}
+                  <Link href="/landing/privacyPage" className="underline underline-offset-2 hover:text-emerald-500 transition-colors" target="_blank">
+                    Privacy Policy
+                  </Link>.
+                </label>
+              </div>
 
               <Button
                 type="submit"
