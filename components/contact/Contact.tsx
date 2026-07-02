@@ -33,15 +33,25 @@ export default function Contact() {
     const text = encodeURIComponent(rawText);
     const whatsappURL = `https://wa.me/919022391182?text=${text}`;
 
-    // 4. Open a blank tab IMMEDIATELY so Brave/Safari popup blockers ignore it
-    const whatsappTab = window.open("about:blank", "_blank");
+    // 4. Mobile Detection
+    // We check if the user is on a mobile device so we don't break the deep link
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    let whatsappTab: Window | null = null;
+
+    // Only open a blank tab on desktop to bypass strict popup blockers.
+    // On mobile, doing this breaks the OS-level prompt to open the native app.
+    if (!isMobile) {
+      whatsappTab = window.open("about:blank", "_blank");
+    }
 
     try {
       // 5. Trigger the server action
       await createLead(formData);
 
-      // Success: Redirect the opened tab to WhatsApp
-      if (whatsappTab) {
+      // Success: Redirect to WhatsApp
+      if (isMobile) {
+        window.location.href = whatsappURL;
+      } else if (whatsappTab) {
         whatsappTab.location.href = whatsappURL;
       }
       
@@ -49,9 +59,10 @@ export default function Contact() {
     } catch (error) {
       console.error("Failed to save lead to database:", error);
       
-      // FAILSAFE FALLBACK: If the database/server crashes, DO NOT lose the lead.
-      // Redirect them to WhatsApp anyway instead of throwing an alert.
-      if (whatsappTab) {
+      // FAILSAFE FALLBACK
+      if (isMobile) {
+        window.location.href = whatsappURL;
+      } else if (whatsappTab) {
         whatsappTab.location.href = whatsappURL;
       }
       
