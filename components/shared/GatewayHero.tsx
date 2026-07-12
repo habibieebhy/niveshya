@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import GrandHeroSlider from "./GrandHeroSlider";
 import Footer from "./footer";
+import FloatingCTA from "./FloatingCTA";
 
 const trustedCompanies = [
   { name: "Chandra Enterprises", icon: Building },
@@ -234,6 +235,7 @@ export default function GatewayHero() {
       </main>
 
       <Footer />
+      <FloatingCTA href="wealth#contact"/>
     </>
   );
 }

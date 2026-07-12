@@ -3,12 +3,21 @@
 import { useState, useEffect } from "react";
 import { MessageCircle } from "lucide-react";
 
-export default function FloatingCTA() {
+// 1. Define the props interface to accept a custom link
+interface FloatingCTAProps {
+  href?: string; 
+}
+
+// 2. Set the default href to "#contact" so you don't break existing pages
+export default function FloatingCTA({ href = "#contact" }: FloatingCTAProps) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     // Look for the contact section on the current page
     const contactSection = document.getElementById("contact");
+    
+    // If there is no contact section on this page (like the landing page), 
+    // it will just return and the CTA will stay visible forever.
     if (!contactSection) return;
 
     // Set up an observer to hide the CTA when the contact section is in view
@@ -52,7 +61,7 @@ export default function FloatingCTA() {
         }`}
       >
         <a
-          href="#contact"
+          href={href} // 3. Use the dynamic href here
           aria-label="Contact Us"
           className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-emerald-700 hover:shadow-[0_0_30px_rgba(16,185,129,0.8)]"
         >
