@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     "Integrated Wealth Advisory and Accounting Services designed to help you manage today and grow tomorrow.",
 
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/fav1.png",
+    shortcut: "/fav1.png",
+    apple: "/fav1.png",
   },
 };
 
