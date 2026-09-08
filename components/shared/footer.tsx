@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { FaLinkedin, FaFacebook, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -16,9 +17,40 @@ export default function Footer() {
             <div className="inline-flex items-center rounded-full border bg-card px-3 py-1 text-xs font-medium mb-6">
               Niveshya Advisory
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed pr-4">
+            <p className="text-muted-foreground text-sm leading-relaxed pr-4 mb-6">
               Financial Clarity. Business Growth. Long-Term Wealth. Empowering your financial journey with informed decisions.
             </p>
+            
+            {/* Social Media Links */}
+            <div className="flex items-center gap-4">
+              <a 
+                href="https://www.linkedin.com/company/niveshya-advisory/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/NiveshyaAdvisory/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Facebook"
+              >
+                <FaFacebook className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.youtube.com/@NiveshyaAdvisory" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="YouTube"
+              >
+                <FaYoutube className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}

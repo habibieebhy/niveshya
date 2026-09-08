@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { FaLinkedin, FaFacebook, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -24,6 +25,37 @@ export default function Footer() {
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
               Expert Wealth Advisory and Accounting Services to help you make informed decisions and achieve your financial goals with confidence.
             </p>
+            
+            {/* Social Media Links */}
+            <div className="flex items-center gap-5 mt-6">
+              <a 
+                href="https://www.linkedin.com/company/niveshya-advisory/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/NiveshyaAdvisory/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Facebook"
+              >
+                <FaFacebook className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.youtube.com/@NiveshyaAdvisory" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="YouTube"
+              >
+                <FaYoutube className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
