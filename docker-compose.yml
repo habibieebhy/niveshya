@@ -1,9 +1,10 @@
 services:
   niveshya:
-    image: zahrbrixta/niveshya:v7
+    image: zahrbrixta/niveshya:v8
     container_name: niveshya
     restart: unless-stopped
-
+    ports:
+      - "55011:3000"
     env_file:
       - .env
 
@@ -19,16 +20,16 @@ services:
       - WHATSAPP_PHONE_NUMBER_ID=${WHATSAPP_PHONE_NUMBER_ID}
       - WHATSAPP_BUSINESS_ACCOUNT_ID=${WHATSAPP_BUSINESS_ACCOUNT_ID}
 
-  webserver:
-    image: nginx:alpine
-    container_name: niveshya_nginx
-    restart: unless-stopped
+  # webserver:
+  #   image: nginx:alpine
+  #   container_name: niveshya_nginx
+  #   restart: unless-stopped
 
-    ports:
-      - "55010:80"
+  #   ports:
+  #     - "55010:80"
 
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
 
-    depends_on:
-      - niveshya
+  #   depends_on:
+  #     - niveshya
